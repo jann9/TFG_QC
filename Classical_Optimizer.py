@@ -61,7 +61,8 @@ def build_max_cut_paulis(G):
 # Print the Hamiltonian
 max_cut_paulis = build_max_cut_paulis(G)
 cost_hamiltonian = SparsePauliOp.from_list(max_cut_paulis)
-print("Cost Function Hamiltonian: \n", cost_hamiltonian)
+print(max_cut_paulis)
+# print("Cost Function Hamiltonian: \n", cost_hamiltonian)
 
 #   Convert Graph into QUBO matrix
 
@@ -92,23 +93,26 @@ def get_pauli_list(Q):
 
     for i in range(num_vars):
         for j in range(num_vars):
-            if Q[i, j] != 0:
+            if Q[i, j] != 0 and i != j:
                 # Create an identity string of length num_vars
                 pauli_str = ["I"] * num_vars  
                 
                 # Apply Pauli-Z operators at positions i and j
-                pauli_str[i] = "Z"
-                if i != j:  # Avoid double Z if i == j (diagonal terms)
-                    pauli_str[j] = "Z"
+                pauli_str[i], pauli_str[j] = "Z", "Z"
 
                 # Convert to string format and add the term
-                pauli_terms.append(("".join(pauli_str), float(Q[i, j])))
+                pauli_terms.append(("".join(pauli_str)[::-1], Q[i, j]))
 
-    return PauliSumOp(SparsePauliOp.from_list(pauli_terms))  # Construct Pauli Hamiltonian
+    return pauli_terms  # Construct Pauli Hamiltonian
 
 # Convert QUBO to Pauli Hamiltonian
-H = get_pauli_list(Q)
-print("Cost Function Hamiltonian: \n", H)
+paulis = get_pauli_list(Q)
+H = SparsePauliOp.from_list(paulis)
+print("\n")
+print(paulis)
+print("\n")
+print(G[9][7]['weight'])
+#print("Cost Function Hamiltonian: \n", H)
 
 
 
