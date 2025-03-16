@@ -42,45 +42,24 @@ print("\n")
 
 # --------------------------- Create the Hamiltonian
 
-def build_max_cut_paulis(G):
-    """Convert the graph to Pauli list.
-
-    This function does the inverse of `build_max_cut_graph`
-    """
-    pauli_list = []
-    for edge in list(G.edges()):
-        paulis = ["I"] * len(list(G.nodes()))
-        paulis[edge[0]], paulis[edge[1]] = "Z", "Z"
-
-        weight = G[edge[0]][edge[1]]['weight']
-
-        pauli_list.append(("".join(paulis)[::-1], weight))
-
-    return pauli_list
-
-# Print the Hamiltonian
-max_cut_paulis = build_max_cut_paulis(G)
-cost_hamiltonian = SparsePauliOp.from_list(max_cut_paulis)
-print(max_cut_paulis)
-# print("Cost Function Hamiltonian: \n", cost_hamiltonian)
 
 #   Convert Graph into QUBO matrix
 
 def maxcut_qubo(G):
     # Generate QUBO matrix for MaxCut problem, mapping nodes to indices.
     node_list = list(G.nodes())  # Get list of nodes
-    node_index = {node: idx for idx, node in enumerate(node_list)}  # Map nodes to indices
+    # node_index = {node: idx for idx, node in enumerate(node_list)}  # Map nodes to indices
     n = len(node_list)  # Number of nodes
 
     Q = np.zeros((n, n))  # Initialize QUBO matrix
 
     for i, j in G.edges():
         w = G[i][j]['weight']
-        idx_i = node_index[i]  # Convert node to index
-        idx_j = node_index[j]  # Convert node to index
-        Q[idx_i, idx_i] -= w
-        Q[idx_j, idx_j] -= w
-        Q[idx_i, idx_j] += 2 * w  # Off-diagonal term
+        # idx_i = node_index[i]  # Convert node to index
+        # idx_j = node_index[j]  # Convert node to index
+        Q[i, i] -= w
+        Q[j, j] -= w
+        Q[i, j] += 2 * w  # Off-diagonal term
 
     return Q, node_list  # Return QUBO and node mapping
 
@@ -109,39 +88,14 @@ def get_pauli_list(Q):
 paulis = get_pauli_list(Q)
 H = SparsePauliOp.from_list(paulis)
 print("\n")
-print(paulis)
-print("\n")
-print(G[9][7]['weight'])
-#print("Cost Function Hamiltonian: \n", H)
+# print(paulis)
+# print("\n")
+print("Cost Function Hamiltonian: \n", H)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
 
 # QAOA circuit
 
-QAOAcircuit = QAOAAnsatz(cost_operator=cost_hamiltonian, reps=2)
+QAOAcircuit = QAOAAnsatz(cost_operator=H, reps=2)
 QAOAcircuit.measure_all()
 
 # QAOAcircuit.draw(output="mpl").show()
@@ -149,7 +103,7 @@ print(QAOAcircuit) # Print the circuit
 
 print(QAOAcircuit.parameters) # Print the parameters
 
-#----------------- Optimization of the parameters
+#-------------------------- Optimization of the parameters
 
 backend = Aer.get_backend('qasm_simulator')
 print(backend)
@@ -205,7 +159,7 @@ with Session(backend=backend) as session:
     result = minimize(
         cost_func_estimator,
         init_params,
-        args=(candidate_circuit, cost_hamiltonian, estimator),
+        args=(candidate_circuit, H, estimator),
         method="COBYLA",
         tol=1e-2,
     )
@@ -219,4 +173,47 @@ plt.plot(objective_func_vals)
 plt.xlabel("Iteration")
 plt.ylabel("Cost")
 plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+
+def build_max_cut_paulis(G):
+    """Convert the graph to Pauli list.
+
+    This function does the inverse of `build_max_cut_graph`
+    """
+    pauli_list = []
+    for edge in list(G.edges()):
+        paulis = ["I"] * len(list(G.nodes()))
+        paulis[edge[0]], paulis[edge[1]] = "Z", "Z"
+
+        weight = G[edge[0]][edge[1]]['weight']
+        pauli_list.append(("".join(paulis)[::-1], weight))
+
+    return pauli_list
+
+# Print the Hamiltonian
+max_cut_paulis = build_max_cut_paulis(G)
+cost_hamiltonian = SparsePauliOp.from_list(max_cut_paulis)
+# print(max_cut_paulis)
+print("Cost Function Hamiltonian: \n", cost_hamiltonian)
 '''
