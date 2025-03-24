@@ -13,8 +13,10 @@ from qiskit_ibm_runtime import QiskitRuntimeService
 from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
 from qiskit_ibm_runtime import Session, EstimatorV2 as Estimator
 from scipy.optimize import minimize
+import matplotlib
 import matplotlib.pyplot as plt
 import networkx as nx
+from qiskit_ibm_runtime import SamplerV2 as Sampler
 
 # ----------------- Import dataset
 
@@ -176,10 +178,42 @@ plt.show()
 
 
 
+optimized_circuit = candidate_circuit.assign_parameters(result.x)
+# optimized_circuit.draw('mpl', fold=False, idle_wires=False)
+print (optimized_circuit)
 
 
+sampler = Sampler(mode=backend)
+sampler.options.default_shots = 10000
+
+# Set simple error suppression/mitigation options
+sampler.options.dynamical_decoupling.enable = True
+sampler.options.dynamical_decoupling.sequence_type = "XY4"
+sampler.options.twirling.enable_gates = True
+sampler.options.twirling.num_randomizations = "auto"
+
+pub= (optimized_circuit, )
+job = sampler.run([pub], shots=int(1e4))
+counts_int = job.result()[0].data.meas.get_int_counts()
+counts_bin = job.result()[0].data.meas.get_counts()
+shots = sum(counts_int.values())
+final_distribution_int = {key: val/shots for key, val in counts_int.items()}
+final_distribution_bin = {key: val/shots for key, val in counts_bin.items()}
+print(final_distribution_int)
 
 
+# auxiliary functions to sample most likely bitstring
+def to_bitstring(integer, num_bits):
+    result = np.binary_repr(integer, width=num_bits)
+    return [int(digit) for digit in result]
+
+keys = list(final_distribution_int.keys())
+values = list(final_distribution_int.values())
+most_likely = keys[np.argmax(np.abs(values))]
+most_likely_bitstring = to_bitstring(most_likely, len(G))
+most_likely_bitstring.reverse()
+
+print("Result bitstring:", most_likely_bitstring)
 
 
 
@@ -195,6 +229,25 @@ plt.show()
 
 
 '''
+matplotlib.rcParams.update({"font.size": 10})
+final_bits = final_distribution_bin
+values = np.abs(list(final_bits.values()))
+top_4_values = sorted(values, reverse=True)[:4]
+positions = []
+for value in top_4_values:
+    positions.append(np.where(values == value)[0])
+fig = plt.figure(figsize=(11, 6))
+ax = fig.add_subplot(1, 1, 1)
+plt.xticks(rotation=45)
+plt.title("Result Distribution")
+plt.xlabel("Bitstrings (reversed)")
+plt.ylabel("Probability")
+ax.bar(list(final_bits.keys()), list(final_bits.values()), color="tab:grey")
+for p in positions:
+    ax.get_children()[int(p)].set_color("tab:purple")
+plt.show()
+
+
 
 def build_max_cut_paulis(G):
     """Convert the graph to Pauli list.
