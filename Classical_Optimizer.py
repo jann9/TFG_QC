@@ -37,10 +37,11 @@ def extract_graph(num_nodes, probability, graph_index):
 
 # Example: Extract a graph
 G = extract_graph(num_nodes=10, probability=0.5, graph_index=0)
+'''
 print("Graph: \n")
 print(G)
 print("\n")
-
+'''
 
 # --------------------------- Create the Hamiltonian
 
@@ -92,7 +93,7 @@ H = SparsePauliOp.from_list(paulis)
 print("\n")
 # print(paulis)
 # print("\n")
-print("Cost Function Hamiltonian: \n", H)
+# print("Cost Function Hamiltonian: \n", H)
 
 
 # QAOA circuit
@@ -101,14 +102,14 @@ QAOAcircuit = QAOAAnsatz(cost_operator=H, reps=2)
 QAOAcircuit.measure_all()
 
 # QAOAcircuit.draw(output="mpl").show()
-print(QAOAcircuit) # Print the circuit
+# print(QAOAcircuit) # Print the circuit
 
-print(QAOAcircuit.parameters) # Print the parameters
+# print(QAOAcircuit.parameters) # Print the parameters
 
 #-------------------------- Optimization of the parameters
 
 backend = Aer.get_backend('qasm_simulator')
-print(backend)
+# print(backend)
 
 # Create pass manager for transpilation
 pm = generate_preset_pass_manager(optimization_level=3,
@@ -148,16 +149,17 @@ def cost_func_estimator(params, ansatz, hamiltonian, estimator):
 
 objective_func_vals = [] # Global variable
 with Session(backend=backend) as session:
-    # If using qiskit-ibm-runtime<0.24.0, change `mode=` to `session=`
+
     estimator = Estimator(mode=session)
     estimator.options.default_shots = 1000
 
     # Set simple error suppression/mitigation options
+    '''
     estimator.options.dynamical_decoupling.enable = True
     estimator.options.dynamical_decoupling.sequence_type = "XY4"
     estimator.options.twirling.enable_gates = True
     estimator.options.twirling.num_randomizations = "auto"
-
+    '''
     result = minimize(
         cost_func_estimator,
         init_params,
@@ -169,7 +171,7 @@ with Session(backend=backend) as session:
 
 
 
-
+'''
 plt.figure(figsize=(12, 6))
 plt.plot(objective_func_vals)
 plt.xlabel("Iteration")
@@ -180,7 +182,7 @@ plt.show()
 
 optimized_circuit = candidate_circuit.assign_parameters(result.x)
 # optimized_circuit.draw('mpl', fold=False, idle_wires=False)
-print (optimized_circuit)
+# print (optimized_circuit)
 
 
 sampler = Sampler(mode=backend)
@@ -214,7 +216,7 @@ most_likely_bitstring = to_bitstring(most_likely, len(G))
 most_likely_bitstring.reverse()
 
 print("Result bitstring:", most_likely_bitstring)
-
+'''
 
 
 
