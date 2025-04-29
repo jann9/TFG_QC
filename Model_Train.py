@@ -3,6 +3,7 @@ import pandas as pd
 import xgboost as xgb
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_absolute_percentage_error
 import joblib
 import os
 
@@ -56,17 +57,21 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
 
     # Calculate Mean Squared Error (MSE)
     mse = mean_squared_error(y_test, y_pred)
-    results[num_nodes] = mse
-    print(f"✅ Mean Squared Error: {mse:.5f}")
+    mape = mean_absolute_percentage_error(y_test, y_pred)
+    results[num_nodes, "mse"] = mse
+    results[num_nodes, "mape"] = mape
+    print(f" Mean Squared Error: {mse:.5f}")
+    print(f" Mean Absolute Percentage Error: {mape:.5f}")
 
     # Save the trained model
     model_filename = f"xgboost_model_{num_nodes}.pkl"
     joblib.dump(model, model_filename)
     print(f" Model saved as {model_filename}")
 
+print(results)
 # Print final results summary
 print("\n **Final MSE Results:**")
-for num_nodes, mse in results.items():
-    print(f" - Dataset {num_nodes}: MSE = {mse:.5f}")
+for (k, metric), value in results.items():
+    print(f"Dataset {k}, {metric} = {value}")
 
 print("\n Training complete for all datasets!")
