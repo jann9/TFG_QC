@@ -1,0 +1,95 @@
+Model Evaluation Metrics
+========================================
+
+
+xgboost
+----------------------------------------
+
+
+ Node size: 10
+   - edge_prob = 0.5; MSE = 0.00000, MAPE = 0.00015
+   - edge_prob = 0.6; MSE = 0.16570, MAPE = 0.29757
+   - edge_prob = 0.7; MSE = 0.07902, MAPE = 0.04325
+   - edge_prob = 0.8; MSE = 0.05393, MAPE = 0.03779
+   - edge_prob = 0.9; MSE = 0.08234, MAPE = 0.04990
+
+ Node size: 12
+   - edge_prob = 0.5; MSE = 0.00000, MAPE = 0.00014
+   - edge_prob = 0.6; MSE = 0.41939, MAPE = 0.17808
+   - edge_prob = 0.7; MSE = 0.10620, MAPE = 0.04765
+   - edge_prob = 0.8; MSE = 0.24492, MAPE = 0.26730
+   - edge_prob = 0.9; MSE = 0.17674, MAPE = 0.15931
+
+ Node size: 15
+   - edge_prob = 0.5; MSE = 0.00000, MAPE = 0.00011
+   - edge_prob = 0.6; MSE = 0.10092, MAPE = 0.05841
+   - edge_prob = 0.7; MSE = 0.06193, MAPE = 0.03735
+   - edge_prob = 0.8; MSE = 0.15958, MAPE = 0.06515
+   - edge_prob = 0.9; MSE = 0.06518, MAPE = 0.03660
+
+ Node size: 20
+   - edge_prob = 0.5; MSE = 0.00000, MAPE = 0.00010
+   - edge_prob = 0.6; MSE = 0.17056, MAPE = 0.11851
+   - edge_prob = 0.7; MSE = 0.06010, MAPE = 0.04309
+   - edge_prob = 0.8; MSE = 0.12307, MAPE = 0.07705
+   - edge_prob = 0.9; MSE = 0.05786, MAPE = 0.03532
+
+ Node size: 25
+   - edge_prob = 0.5; MSE = 0.00000, MAPE = 0.00016
+   - edge_prob = 0.6; MSE = 0.23264, MAPE = 0.08146
+   - edge_prob = 0.7; MSE = 0.09997, MAPE = 0.04050
+   - edge_prob = 0.8; MSE = 0.07884, MAPE = 0.05178
+   - edge_prob = 0.9; MSE = 0.12760, MAPE = 0.05133
+
+ Full model:
+ - num_nodes = 10.0; MSE = 0.13516, MAPE = 0.06352
+ - num_nodes = 12.0; MSE = 0.12557, MAPE = 0.10348
+ - num_nodes = 15.0; MSE = 0.06171, MAPE = 0.03836
+ - num_nodes = 20.0; MSE = 0.07211, MAPE = 0.04736
+ - num_nodes = 25.0; MSE = 0.10466, MAPE = 0.05811
+
+MLP
+----------------------------------------
+
+
+ Node size: 10.0
+   - edge_prob = 0.5; MSE = 0.40428, MAPE = 0.20336
+   - edge_prob = 0.6; MSE = 0.44311, MAPE = 0.39196
+   - edge_prob = 0.7; MSE = 0.34564, MAPE = 0.21345
+   - edge_prob = 0.8; MSE = 0.35010, MAPE = 0.26153
+   - edge_prob = 0.9; MSE = 0.33112, MAPE = 0.20649
+
+ Node size: 12.0
+   - edge_prob = 0.5; MSE = 0.38472, MAPE = 0.18771
+   - edge_prob = 0.6; MSE = 0.58859, MAPE = 0.31054
+   - edge_prob = 0.7; MSE = 0.27469, MAPE = 0.18054
+   - edge_prob = 0.8; MSE = 0.45091, MAPE = 0.37614
+   - edge_prob = 0.9; MSE = 0.54288, MAPE = 0.62197
+
+ Node size: 15.0
+   - edge_prob = 0.5; MSE = 0.26874, MAPE = 0.13921
+   - edge_prob = 0.6; MSE = 0.23874, MAPE = 0.15436
+   - edge_prob = 0.7; MSE = 0.29073, MAPE = 0.19958
+   - edge_prob = 0.8; MSE = 0.50272, MAPE = 0.31363
+   - edge_prob = 0.9; MSE = 0.41470, MAPE = 0.25250
+
+ Node size: 20.0
+   - edge_prob = 0.5; MSE = 0.33904, MAPE = 0.15735
+   - edge_prob = 0.6; MSE = 0.39571, MAPE = 0.30119
+   - edge_prob = 0.7; MSE = 0.33690, MAPE = 0.19044
+   - edge_prob = 0.8; MSE = 0.51506, MAPE = 0.29974
+   - edge_prob = 0.9; MSE = 0.26958, MAPE = 0.21273
+
+ Node size: 25.0
+   - edge_prob = 0.5; MSE = 0.46698, MAPE = 0.26995
+   - edge_prob = 0.6; MSE = 0.38529, MAPE = 0.21088
+   - edge_prob = 0.7; MSE = 0.29031, MAPE = 0.21198
+   - edge_prob = 0.8; MSE = 0.25908, MAPE = 0.20631
+   - edge_prob = 0.9; MSE = 0.42726, MAPE = 0.22596
+
+ Full model:
+ - num_nodes = 10.0; MSE = 0.47491, MAPE = 0.22284
+ - num_nodes = 12.0; MSE = 0.46309, MAPE = 0.30940
+ - num_nodes = 15.0; MSE = 0.33435, MAPE = 0.22588
+ - num_nodes = 20.0; MSE = 0.43286, MAPE = 0.25292
+ - num_nodes = 25.0; MSE = 0.37558, MAPE = 0.25429

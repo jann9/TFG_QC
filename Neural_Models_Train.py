@@ -1,17 +1,16 @@
+from sklearn.neural_network import MLPRegressor
 import numpy as np
 import pandas as pd
-import xgboost as xgb
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_percentage_error
 import joblib
 import os
 import time
-
 # Define the datasets to iterate over
 node_sizes = [10, 12, 15, 20, 25]  # Different dataset sizes
 base_dir = "datasets"  # Directory where datasets are stored
-output_file = "Models/XGB_Training_results.txt"
+output_file = "Models/Neural_Training_results.txt"
 
 # Prepare a dictionary to store results
 results = {}
@@ -50,19 +49,16 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
     y = df[output_columns].values
 
     # Split into training and testing data (80%-20%)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1) # test size 0.25 default
 
     start_time = time.time() # Start timer
     # Define XGBoost model
-    model = xgb.XGBRegressor(
-        objective="reg:squarederror",  
-        n_estimators=500,  # More trees
-        max_depth=4,  # Reduce depth to avoid overfitting
-        learning_rate=0.05,  # Slower learning
-        subsample=0.8,  # Use 80% of data per tree
-        colsample_bytree=0.8,  # Use 80% of features per tree
-        random_state=42
-    )
+    model = MLPRegressor(
+        activation= "logistic",
+        solver= "lbfgs",
+        random_state=1, 
+        max_iter=2000, 
+        tol=0.1)
 
     # Train the model
     model.fit(X_train, y_train)
@@ -82,8 +78,9 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
     print(f" Training time: {train_time: .5f}")
     with open(output_file, "a") as f:
             f.write(f"   - MSE = {mse:.5f}, MAPE = {mape:.5f}, TIME = {train_time: .5f}\n")
+    
     # Save the trained model
-    model_filename = f"Models/xgboost_model_{num_nodes}.pkl"
+    model_filename = f"Models/MLP_model_{num_nodes}.pkl"
     joblib.dump(model, model_filename)
     print(f" Model saved as {model_filename}")
 
@@ -94,3 +91,5 @@ for (k, metric), value in results.items():
     print(f"Dataset {k}, {metric} = {value}")
 
 print("\n Training complete for all datasets!")
+
+
