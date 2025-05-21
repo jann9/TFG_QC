@@ -52,12 +52,13 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1) # test size 0.25 default
 
     start_time = time.time() # Start timer
-    # Define XGBoost model
+    # Define MLP model
     model = MLPRegressor(
+        hidden_layer_sizes= (128, 64, 32),
         activation= "logistic",
         solver= "lbfgs",
         random_state=1, 
-        max_iter=2000, 
+        max_iter=5000, 
         tol=0.1)
 
     # Train the model
@@ -83,6 +84,16 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
     model_filename = f"Models/MLP_model_{num_nodes}.pkl"
     joblib.dump(model, model_filename)
     print(f" Model saved as {model_filename}")
+    from sklearn.model_selection import GridSearchCV
+'''
+    param_grid = {
+        'hidden_layer_sizes': [(50,), (100,), (100, 50), (128, 64, 32)]
+    }
+
+    grid = GridSearchCV(MLPRegressor(max_iter=5000), param_grid, cv=3)
+    grid.fit(X_train, y_train)
+    print("Number of nodes;", num_nodes,"Best config:", grid.best_params_)
+'''
 
 print(results)
 # Print final results summary

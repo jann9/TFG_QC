@@ -53,43 +53,43 @@ MLP
 
 
  Node size: 10.0
-   - edge_prob = 0.5; MSE = 0.40428, MAPE = 0.20336
-   - edge_prob = 0.6; MSE = 0.44311, MAPE = 0.39196
-   - edge_prob = 0.7; MSE = 0.34564, MAPE = 0.21345
-   - edge_prob = 0.8; MSE = 0.35010, MAPE = 0.26153
-   - edge_prob = 0.9; MSE = 0.33112, MAPE = 0.20649
+   - edge_prob = 0.5; MSE = 0.42276, MAPE = 0.21826
+   - edge_prob = 0.6; MSE = 0.43460, MAPE = 0.41606
+   - edge_prob = 0.7; MSE = 0.34759, MAPE = 0.21264
+   - edge_prob = 0.8; MSE = 0.32668, MAPE = 0.25406
+   - edge_prob = 0.9; MSE = 0.35876, MAPE = 0.21658
 
  Node size: 12.0
-   - edge_prob = 0.5; MSE = 0.38472, MAPE = 0.18771
-   - edge_prob = 0.6; MSE = 0.58859, MAPE = 0.31054
-   - edge_prob = 0.7; MSE = 0.27469, MAPE = 0.18054
-   - edge_prob = 0.8; MSE = 0.45091, MAPE = 0.37614
-   - edge_prob = 0.9; MSE = 0.54288, MAPE = 0.62197
+   - edge_prob = 0.5; MSE = 0.33904, MAPE = 0.19481
+   - edge_prob = 0.6; MSE = 0.64297, MAPE = 0.34515
+   - edge_prob = 0.7; MSE = 0.26931, MAPE = 0.18022
+   - edge_prob = 0.8; MSE = 0.43585, MAPE = 0.36417
+   - edge_prob = 0.9; MSE = 0.56183, MAPE = 0.59775
 
  Node size: 15.0
-   - edge_prob = 0.5; MSE = 0.26874, MAPE = 0.13921
-   - edge_prob = 0.6; MSE = 0.23874, MAPE = 0.15436
-   - edge_prob = 0.7; MSE = 0.29073, MAPE = 0.19958
-   - edge_prob = 0.8; MSE = 0.50272, MAPE = 0.31363
-   - edge_prob = 0.9; MSE = 0.41470, MAPE = 0.25250
+   - edge_prob = 0.5; MSE = 0.21032, MAPE = 0.15437
+   - edge_prob = 0.6; MSE = 0.21241, MAPE = 0.15612
+   - edge_prob = 0.7; MSE = 0.28684, MAPE = 0.19080
+   - edge_prob = 0.8; MSE = 0.46483, MAPE = 0.29031
+   - edge_prob = 0.9; MSE = 0.34915, MAPE = 0.21453
 
  Node size: 20.0
-   - edge_prob = 0.5; MSE = 0.33904, MAPE = 0.15735
-   - edge_prob = 0.6; MSE = 0.39571, MAPE = 0.30119
-   - edge_prob = 0.7; MSE = 0.33690, MAPE = 0.19044
-   - edge_prob = 0.8; MSE = 0.51506, MAPE = 0.29974
-   - edge_prob = 0.9; MSE = 0.26958, MAPE = 0.21273
+   - edge_prob = 0.5; MSE = 0.29281, MAPE = 0.16616
+   - edge_prob = 0.6; MSE = 0.40723, MAPE = 0.30691
+   - edge_prob = 0.7; MSE = 0.33396, MAPE = 0.17468
+   - edge_prob = 0.8; MSE = 0.48276, MAPE = 0.27334
+   - edge_prob = 0.9; MSE = 0.24209, MAPE = 0.17750
 
  Node size: 25.0
-   - edge_prob = 0.5; MSE = 0.46698, MAPE = 0.26995
-   - edge_prob = 0.6; MSE = 0.38529, MAPE = 0.21088
-   - edge_prob = 0.7; MSE = 0.29031, MAPE = 0.21198
-   - edge_prob = 0.8; MSE = 0.25908, MAPE = 0.20631
-   - edge_prob = 0.9; MSE = 0.42726, MAPE = 0.22596
+   - edge_prob = 0.5; MSE = 0.49163, MAPE = 0.29565
+   - edge_prob = 0.6; MSE = 0.36996, MAPE = 0.22455
+   - edge_prob = 0.7; MSE = 0.28332, MAPE = 0.20543
+   - edge_prob = 0.8; MSE = 0.22523, MAPE = 0.18409
+   - edge_prob = 0.9; MSE = 0.45743, MAPE = 0.22116
 
  Full model:
- - num_nodes = 10.0; MSE = 0.47491, MAPE = 0.22284
- - num_nodes = 12.0; MSE = 0.46309, MAPE = 0.30940
- - num_nodes = 15.0; MSE = 0.33435, MAPE = 0.22588
- - num_nodes = 20.0; MSE = 0.43286, MAPE = 0.25292
- - num_nodes = 25.0; MSE = 0.37558, MAPE = 0.25429
+ - num_nodes = 10.0; MSE = 0.38094, MAPE = 0.27873
+ - num_nodes = 12.0; MSE = 0.45263, MAPE = 0.33007
+ - num_nodes = 15.0; MSE = 0.31308, MAPE = 0.19730
+ - num_nodes = 20.0; MSE = 0.35387, MAPE = 0.22719
+ - num_nodes = 25.0; MSE = 0.36970, MAPE = 0.23338
