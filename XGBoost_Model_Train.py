@@ -12,9 +12,10 @@ import time
 node_sizes = [10, 12, 15, 20, 25]  # Different dataset sizes
 base_dir = "datasets"  # Directory where datasets are stored
 output_file = "Models/XGB_Training_results.txt"
+metrics_csv = "Models/XGB_Training_metrics.csv" 
 
 # Prepare a dictionary to store results
-results = {}
+results_data = []
 
 # === Start output file ===
 with open(output_file, "w") as f:
@@ -72,23 +73,35 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
     y_pred = model.predict(X_test)
 
     # Calculate Mean Squared Error (MSE)
-    mse = mean_squared_error(y_test, y_pred)
+    rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     mape = mean_absolute_percentage_error(y_test, y_pred)
-    results[num_nodes, "mse"] = mse
-    results[num_nodes, "mape"] = mape
-    results[num_nodes, "time"] = train_time
-    print(f" Mean Squared Error: {mse:.5f}")
+    
+    
+    results_data.append({
+        'node_size': num_nodes,
+        'model_type': 'Q_values',
+        'dataset_size': len(df),
+        'n_features': len(feature_columns),
+        'n_outputs': len(output_columns),
+        'rmse': rmse,
+        'mape': mape,
+        'training_time': train_time,
+        'model_file': f"xgboost_model_{num_nodes}.pkl"
+    })
+    
+    
+    print(f" Root Mean Squared Error: {rmse:.5f}")
     print(f" Mean Absolute Percentage Error: {mape:.5f}")
     print(f" Training time: {train_time: .5f}")
     with open(output_file, "a") as f:
-            f.write(f"   - MSE = {mse:.5f}, MAPE = {mape:.5f}, TIME = {train_time: .5f}\n")
+            f.write(f"   - RMSE = {rmse:.5f}, MAPE = {mape:.5f}, TIME = {train_time: .5f}\n")
     # Save the trained model
     model_filename = f"Models/xgboost_model_{num_nodes}.pkl"
     joblib.dump(model, model_filename)
     print(f" Model saved as {model_filename}")
     
     
-    
+    # ==== SECOND MODEL: Circuit features ====
     dataset_filename = f"dataset_{num_nodes}_nodes_Circuit.csv" if num_nodes != "full" else "dataset_full_Circuit.csv"
     dataset_path = os.path.join(base_dir, dataset_filename)
 
@@ -138,25 +151,39 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
     y_pred = model.predict(X_test)
 
     # Calculate Mean Squared Error (MSE)
-    mse = mean_squared_error(y_test, y_pred)
+    rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     mape = mean_absolute_percentage_error(y_test, y_pred)
-    results[num_nodes, "Circuit mse"] = mse
-    results[num_nodes, "Circuit mape"] = mape
-    results[num_nodes, "Circuit time"] = train_time
-    print(f" Mean Squared Error: {mse:.5f}")
+    
+    results_data.append({
+        'node_size': num_nodes,
+        'model_type': 'Circuit',
+        'dataset_size': len(df),
+        'n_features': len(feature_columns),
+        'n_outputs': len(output_columns),
+        'rmse': rmse,
+        'mape': mape,
+        'training_time': train_time,
+        'model_file': f"xgboost_model_{num_nodes}_Circuit.pkl"
+    })
+    
+    print(f" Root Mean Squared Error: {rmse:.5f}")
     print(f" Mean Absolute Percentage Error: {mape:.5f}")
     print(f" Training time: {train_time: .5f}")
     with open(output_file, "a") as f:
-            f.write(f"   - MSE = {mse:.5f}, MAPE = {mape:.5f}, TIME = {train_time: .5f}\n")
+            f.write(f"   - RMSE = {rmse:.5f}, MAPE = {mape:.5f}, TIME = {train_time: .5f}\n")
     # Save the trained model
     model_filename = f"Models/xgboost_model_{num_nodes}_Circuit.pkl"
     joblib.dump(model, model_filename)
     print(f" Model saved as {model_filename}")
 
-print(results)
+results_df = pd.DataFrame(results_data)
+results_df.to_csv(metrics_csv, index=False)
+print(f"\nMetrics saved to {metrics_csv}")
 # Print final results summary
 print("\n **Final Training Results:**")
-for (k, metric), value in results.items():
-    print(f"Dataset {k}, {metric} = {value}")
+# Print final results summary
+print("\n **Final Training Results:**")
+print(results_df.to_string(index=False))
+
 
 print("\n Training complete for all datasets!")

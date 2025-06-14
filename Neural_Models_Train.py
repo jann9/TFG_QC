@@ -11,9 +11,10 @@ import time
 node_sizes = [10, 12, 15, 20, 25]  # Different dataset sizes
 base_dir = "datasets"  # Directory where datasets are stored
 output_file = "Models/Neural_Training_results.txt"
+metrics_csv = "Models/MLP_Training_metrics.csv"
 
 # Prepare a dictionary to store results
-results = {}
+results_data = []
 
 # === Start output file ===
 with open(output_file, "w") as f:
@@ -49,7 +50,7 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
     y = df[output_columns].values
 
     # Split into training and testing data (80%-20%)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1) # test size 0.25 default
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1) # test size 0.25 default
 
     start_time = time.time() # Start timer
     # Define MLP model
@@ -69,16 +70,32 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
     y_pred = model.predict(X_test)
 
     # Calculate Mean Squared Error (MSE)
-    mse = mean_squared_error(y_test, y_pred)
+    rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     mape = mean_absolute_percentage_error(y_test, y_pred)
-    results[num_nodes, "mse"] = mse
-    results[num_nodes, "mape"] = mape
-    results[num_nodes, "time"] = train_time
-    print(f" Mean Squared Error: {mse:.5f}")
+    
+    results_data.append({
+        'node_size': num_nodes,
+        'model_type': 'Q_values',
+        'dataset_size': len(df),
+        'n_features': len(feature_columns),
+        'n_outputs': len(output_columns),
+        'hidden_layers': str((128, 64, 32)),
+        'activation': 'logistic',
+        'solver': 'lbfgs',
+        'test_size': 0.25,
+        'rmse': rmse,
+        'mape': mape,
+        'training_time': train_time,
+        'converged': model.n_iter_ < model.max_iter,
+        'n_iterations': model.n_iter_,
+        'model_file': f"MLP_model_{num_nodes}.pkl"
+    })
+    
+    print(f" Root Mean Squared Error: {rmse:.5f}")
     print(f" Mean Absolute Percentage Error: {mape:.5f}")
     print(f" Training time: {train_time: .5f}")
     with open(output_file, "a") as f:
-            f.write(f"   - MSE = {mse:.5f}, MAPE = {mape:.5f}, TIME = {train_time: .5f}\n")
+            f.write(f"   - RMSE = {rmse:.5f}, MAPE = {mape:.5f}, TIME = {train_time: .5f}\n")
     
     # Save the trained model
     model_filename = f"Models/MLP_model_{num_nodes}.pkl"
@@ -142,27 +159,44 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
     y_pred = model.predict(X_test)
 
     # Calculate Mean Squared Error (MSE)
-    mse = mean_squared_error(y_test, y_pred)
+    rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     mape = mean_absolute_percentage_error(y_test, y_pred)
-    results[num_nodes, "Circuit mse"] = mse
-    results[num_nodes, "Circuit mape"] = mape
-    results[num_nodes, "Circuit time"] = train_time
-    print(f" Mean Squared Error: {mse:.5f}")
+    
+    results_data.append({
+        'node_size': num_nodes,
+        'model_type': 'Circuit',
+        'dataset_size': len(df),
+        'n_features': len(feature_columns),
+        'n_outputs': len(output_columns),
+        'hidden_layers': str((128, 64, 32)),
+        'activation': 'logistic',
+        'solver': 'lbfgs',
+        'test_size': 0.2,
+        'rmse': rmse,
+        'mape': mape,
+        'training_time': train_time,
+        'converged': model.n_iter_ < model.max_iter,
+        'n_iterations': model.n_iter_,
+        'model_file': f"MLP_model_{num_nodes}_Circuit.pkl"
+    })
+    
+    print(f" Root Mean Squared Error: {rmse:.5f}")
     print(f" Mean Absolute Percentage Error: {mape:.5f}")
     print(f" Training time: {train_time: .5f}")
     with open(output_file, "a") as f:
-            f.write(f"   - MSE = {mse:.5f}, MAPE = {mape:.5f}, TIME = {train_time: .5f}\n")
+            f.write(f"   - RMSE = {rmse:.5f}, MAPE = {mape:.5f}, TIME = {train_time: .5f}\n")
     
     # Save the trained model
     model_filename = f"Models/MLP_model_{num_nodes}_Circuit.pkl"
     joblib.dump(model, model_filename)
     print(f" Model saved as {model_filename}")
 
-print(results)
+results_df = pd.DataFrame(results_data)
+results_df.to_csv(metrics_csv, index=False)
+print(f"\nMetrics saved to {metrics_csv}")
 # Print final results summary
 print("\n **Final Training Results:**")
-for (k, metric), value in results.items():
-    print(f"Dataset {k}, {metric} = {value}")
+print(results_df.to_string(index=False))
 
 print("\n Training complete for all datasets!")
 
