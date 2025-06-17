@@ -176,6 +176,69 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
     joblib.dump(model, model_filename)
     print(f" Model saved as {model_filename}")
 
+
+# ===== Test full models on individual node test sets =====
+print("\n=== Testing Full Models on Individual Node Test Sets ===")
+
+# Test Q-values full model on each node size subset from the full dataset
+full_q_model_path = "Models/xgboost_model_full.pkl"
+full_dataset_path = os.path.join(base_dir, "dataset_full.csv")
+
+if os.path.exists(full_q_model_path) and os.path.exists(full_dataset_path):
+    full_q_model = joblib.load(full_q_model_path)
+    print("Full Q-values model loaded successfully")
+    
+    # Load the full dataset
+    full_df = pd.read_csv(full_dataset_path)
+    
+    for num_nodes in node_sizes:  # [10, 12, 15, 20, 25]
+        print(f"\nTesting full Q-values model on {num_nodes} nodes subset...")
+        
+        # Filter the full dataset for specific num_nodes
+        df_subset = full_df[full_df['num_nodes'] == num_nodes].copy()
+        
+        if len(df_subset) == 0:
+            print(f"No data found for {num_nodes} nodes in full dataset")
+            continue
+        
+        # Extract features and targets
+        feature_columns = [col for col in df_subset.columns if col.startswith("Q_")]
+        output_columns = [col for col in df_subset.columns if col.startswith("x_")]
+        
+        X = df_subset[feature_columns].values
+        y = df_subset[output_columns].values
+        
+        # Use the SAME random_state as during training to get identical test set
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+        
+        # Predict using the full model
+        y_pred = full_q_model.predict(X_test)
+        
+        # Calculate metrics
+        rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+        mape = mean_absolute_percentage_error(y_test, y_pred)
+        
+        # Add to results
+        results_data.append({
+            'node_size': num_nodes,
+            'model_type': 'Q_values_full_model',
+            'dataset_size': len(df_subset),
+            'n_features': len(feature_columns),
+            'n_outputs': len(output_columns),
+            'rmse': rmse,
+            'mape': mape,
+            'training_time': 0,  # No training time for testing
+            'model_file': full_q_model_path
+        })
+        
+        print(f"  RMSE on {num_nodes} nodes subset: {rmse:.5f}")
+        print(f"  MAPE on {num_nodes} nodes subset: {mape:.5f}")
+        
+        with open(output_file, "a") as f:
+            f.write(f"\nFull Q-values model tested on {num_nodes} nodes subset:\n")
+            f.write(f"   - RMSE = {rmse:.5f}, MAPE = {mape:.5f}\n")
+
+# Circuit models don't need per-node testing - only Q-values models do
 results_df = pd.DataFrame(results_data)
 results_df.to_csv(metrics_csv, index=False)
 print(f"\nMetrics saved to {metrics_csv}")
