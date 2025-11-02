@@ -157,7 +157,7 @@ for num_nodes in node_sizes + ["full"]:
         'rmse': rmse,
         'mape': mape,
         'training_time': train_time,
-        'model_file': f"MLP_model_{num_nodes}.pkl"
+        'model_file': f"GNN_model_{num_nodes}.pkl"
     })
 
     print(f"\nTest RMSE: {rmse:.4f}")
@@ -165,6 +165,12 @@ for num_nodes in node_sizes + ["full"]:
     print(f"Training time: {train_time:.2f} seconds")
     with open(output_file, "a") as f:
             f.write(f"   - RMSE = {rmse:.5f}, MAPE = {mape:.5f}, TIME = {train_time: .5f}\n")
+    
+    # Save the trained model as .pkl file
+    model_save_path = f"Models/GCN_model_{num_nodes}.pkl"
+    os.makedirs("Models", exist_ok=True)
+    torch.save(model.state_dict(), model_save_path)
+    print(f"Model saved to {model_save_path}")
     
 results_df = pd.DataFrame(results_data)
 results_df.to_csv(metrics_csv, index=False)

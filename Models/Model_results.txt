@@ -1,95 +1,195 @@
 Model Evaluation Metrics
-========================================
+==================================================
 
 
 xgboost
-----------------------------------------
+--------------------------------------------------
 
+Node size 10: MSE = 0.076198, MAPE = 0.085730
+Node size 12: MSE = 0.189449, MAPE = 0.130496
+Node size 15: MSE = 0.077522, MAPE = 0.039526
+Node size 20: MSE = 0.082317, MAPE = 0.054813
+Node size 25: MSE = 0.107810, MAPE = 0.045043
 
- Node size: 10
-   - edge_prob = 0.5; MSE = 0.00000, MAPE = 0.00015
-   - edge_prob = 0.6; MSE = 0.16570, MAPE = 0.29757
-   - edge_prob = 0.7; MSE = 0.07902, MAPE = 0.04325
-   - edge_prob = 0.8; MSE = 0.05393, MAPE = 0.03779
-   - edge_prob = 0.9; MSE = 0.08234, MAPE = 0.04990
-
- Node size: 12
-   - edge_prob = 0.5; MSE = 0.00000, MAPE = 0.00014
-   - edge_prob = 0.6; MSE = 0.41939, MAPE = 0.17808
-   - edge_prob = 0.7; MSE = 0.10620, MAPE = 0.04765
-   - edge_prob = 0.8; MSE = 0.24492, MAPE = 0.26730
-   - edge_prob = 0.9; MSE = 0.17674, MAPE = 0.15931
-
- Node size: 15
-   - edge_prob = 0.5; MSE = 0.00000, MAPE = 0.00011
-   - edge_prob = 0.6; MSE = 0.10092, MAPE = 0.05841
-   - edge_prob = 0.7; MSE = 0.06193, MAPE = 0.03735
-   - edge_prob = 0.8; MSE = 0.15958, MAPE = 0.06515
-   - edge_prob = 0.9; MSE = 0.06518, MAPE = 0.03660
-
- Node size: 20
-   - edge_prob = 0.5; MSE = 0.00000, MAPE = 0.00010
-   - edge_prob = 0.6; MSE = 0.17056, MAPE = 0.11851
-   - edge_prob = 0.7; MSE = 0.06010, MAPE = 0.04309
-   - edge_prob = 0.8; MSE = 0.12307, MAPE = 0.07705
-   - edge_prob = 0.9; MSE = 0.05786, MAPE = 0.03532
-
- Node size: 25
-   - edge_prob = 0.5; MSE = 0.00000, MAPE = 0.00016
-   - edge_prob = 0.6; MSE = 0.23264, MAPE = 0.08146
-   - edge_prob = 0.7; MSE = 0.09997, MAPE = 0.04050
-   - edge_prob = 0.8; MSE = 0.07884, MAPE = 0.05178
-   - edge_prob = 0.9; MSE = 0.12760, MAPE = 0.05133
-
- Full model:
- - num_nodes = 10.0; MSE = 0.13516, MAPE = 0.06352
- - num_nodes = 12.0; MSE = 0.12557, MAPE = 0.10348
- - num_nodes = 15.0; MSE = 0.06171, MAPE = 0.03836
- - num_nodes = 20.0; MSE = 0.07211, MAPE = 0.04736
- - num_nodes = 25.0; MSE = 0.10466, MAPE = 0.05811
+Full Model Results:
+  num_nodes = 10.000000: MSE = 0.135157, MAPE = 0.063516
+  num_nodes = 12.000000: MSE = 0.125575, MAPE = 0.103480
+  num_nodes = 15.000000: MSE = 0.061711, MAPE = 0.038358
+  num_nodes = 20.000000: MSE = 0.072106, MAPE = 0.047356
+  num_nodes = 25.000000: MSE = 0.104662, MAPE = 0.058112
 
 MLP
-----------------------------------------
+--------------------------------------------------
+
+Node size 10: MSE = 0.377468, MAPE = 0.264933
+Node size 12: MSE = 0.449150, MAPE = 0.336543
+Node size 15: MSE = 0.304318, MAPE = 0.205865
+Node size 20: MSE = 0.351613, MAPE = 0.220821
+Node size 25: MSE = 0.364679, MAPE = 0.226871
+
+Full Model Results:
+  num_nodes = 10.000000: MSE = 0.381793, MAPE = 0.281673
+  num_nodes = 12.000000: MSE = 0.451663, MAPE = 0.332515
+  num_nodes = 15.000000: MSE = 0.312444, MAPE = 0.199490
+  num_nodes = 20.000000: MSE = 0.353705, MAPE = 0.229309
+  num_nodes = 25.000000: MSE = 0.370733, MAPE = 0.236195
+
+GCN
+--------------------------------------------------
+
+Node size 10: MSE = 0.386566, MAPE = 0.235015
+Node size 12: MSE = 0.633231, MAPE = 0.290592
+Node size 15: MSE = 0.704776, MAPE = 0.189910
+Node size 20: MSE = 0.567353, MAPE = 0.216453
+Node size 25: MSE = 0.866704, MAPE = 0.233941
+
+Full Model Results:
+  Full dataset: MSE = 0.533645, MAPE = 198707299483648.000000
+
+======================================================================
+COMPREHENSIVE STATISTICAL SUMMARY
+======================================================================
+
+XGBOOST MODEL
+--------------------------------------------------
+Individual Models (Trained per Node Size):
+  MSE:
+    Count: 5
+    Mean: 0.106659
+    Median: 0.082317
+    Std Dev: 0.042953
+    Q1 (25%): 0.077522
+    Q3 (75%): 0.107810
+    IQR: 0.030288
+    Range: [0.076198, 0.189449]
+  MAPE:
+    Count: 5
+    Mean: 0.071122
+    Median: 0.054813
+    Std Dev: 0.033714
+    Q1 (25%): 0.045043
+    Q3 (75%): 0.085730
+    IQR: 0.040687
+    Range: [0.039526, 0.130496]
+
+Full Model (Single Model for All Sizes):
+  MSE:
+    Count: 5
+    Mean: 0.099842
+    Median: 0.104662
+    Std Dev: 0.028830
+    Q1 (25%): 0.072106
+    Q3 (75%): 0.125575
+    IQR: 0.053469
+    Range: [0.061711, 0.135157]
+  MAPE:
+    Count: 5
+    Mean: 0.062164
+    Median: 0.058112
+    Std Dev: 0.022411
+    Q1 (25%): 0.047356
+    Q3 (75%): 0.063516
+    IQR: 0.016160
+    Range: [0.038358, 0.103480]
+
+MLP MODEL
+--------------------------------------------------
+Individual Models (Trained per Node Size):
+  MSE:
+    Count: 5
+    Mean: 0.369446
+    Median: 0.364679
+    Std Dev: 0.046903
+    Q1 (25%): 0.351613
+    Q3 (75%): 0.377468
+    IQR: 0.025855
+    Range: [0.304318, 0.449150]
+  MAPE:
+    Count: 5
+    Mean: 0.251007
+    Median: 0.226871
+    Std Dev: 0.046993
+    Q1 (25%): 0.220821
+    Q3 (75%): 0.264933
+    IQR: 0.044113
+    Range: [0.205865, 0.336543]
+
+Full Model (Single Model for All Sizes):
+  MSE:
+    Count: 5
+    Mean: 0.374067
+    Median: 0.370733
+    Std Dev: 0.045396
+    Q1 (25%): 0.353705
+    Q3 (75%): 0.381793
+    IQR: 0.028088
+    Range: [0.312444, 0.451663]
+  MAPE:
+    Count: 5
+    Mean: 0.255836
+    Median: 0.236195
+    Std Dev: 0.046501
+    Q1 (25%): 0.229309
+    Q3 (75%): 0.281673
+    IQR: 0.052364
+    Range: [0.199490, 0.332515]
+
+GCN MODEL
+--------------------------------------------------
+Individual Models (Trained per Node Size):
+  MSE:
+    Count: 5
+    Mean: 0.631726
+    Median: 0.633231
+    Std Dev: 0.157988
+    Q1 (25%): 0.567353
+    Q3 (75%): 0.704776
+    IQR: 0.137423
+    Range: [0.386566, 0.866704]
+  MAPE:
+    Count: 5
+    Mean: 0.233182
+    Median: 0.233941
+    Std Dev: 0.033022
+    Q1 (25%): 0.216453
+    Q3 (75%): 0.235015
+    IQR: 0.018562
+    Range: [0.189910, 0.290592]
+
+Full Model (Single Model for All Sizes):
+  MSE:
+    Count: 1
+    Mean: 0.533645
+    Median: 0.533645
+    Std Dev: 0.000000
+    Q1 (25%): 0.533645
+    Q3 (75%): 0.533645
+    IQR: 0.000000
+    Range: [0.533645, 0.533645]
+  MAPE:
+    Count: 1
+    Mean: 198707299483648.000000
+    Median: 198707299483648.000000
+    Std Dev: 0.000000
+    Q1 (25%): 198707299483648.000000
+    Q3 (75%): 198707299483648.000000
+    IQR: 0.000000
+    Range: [198707299483648.000000, 198707299483648.000000]
 
 
- Node size: 10.0
-   - edge_prob = 0.5; MSE = 0.42276, MAPE = 0.21826
-   - edge_prob = 0.6; MSE = 0.43460, MAPE = 0.41606
-   - edge_prob = 0.7; MSE = 0.34759, MAPE = 0.21264
-   - edge_prob = 0.8; MSE = 0.32668, MAPE = 0.25406
-   - edge_prob = 0.9; MSE = 0.35876, MAPE = 0.21658
+======================================================================
+MODEL COMPARISON
+======================================================================
 
- Node size: 12.0
-   - edge_prob = 0.5; MSE = 0.33904, MAPE = 0.19481
-   - edge_prob = 0.6; MSE = 0.64297, MAPE = 0.34515
-   - edge_prob = 0.7; MSE = 0.26931, MAPE = 0.18022
-   - edge_prob = 0.8; MSE = 0.43585, MAPE = 0.36417
-   - edge_prob = 0.9; MSE = 0.56183, MAPE = 0.59775
+XGBOOST:
+  MSE - Individual: 0.106659, Full: 0.099842 (Improvement: +6.39%)
+  MAPE - Individual: 0.071122, Full: 0.062164 (Improvement: +12.59%)
 
- Node size: 15.0
-   - edge_prob = 0.5; MSE = 0.21032, MAPE = 0.15437
-   - edge_prob = 0.6; MSE = 0.21241, MAPE = 0.15612
-   - edge_prob = 0.7; MSE = 0.28684, MAPE = 0.19080
-   - edge_prob = 0.8; MSE = 0.46483, MAPE = 0.29031
-   - edge_prob = 0.9; MSE = 0.34915, MAPE = 0.21453
+MLP:
+  MSE - Individual: 0.369446, Full: 0.374067 (Improvement: -1.25%)
+  MAPE - Individual: 0.251007, Full: 0.255836 (Improvement: -1.92%)
 
- Node size: 20.0
-   - edge_prob = 0.5; MSE = 0.29281, MAPE = 0.16616
-   - edge_prob = 0.6; MSE = 0.40723, MAPE = 0.30691
-   - edge_prob = 0.7; MSE = 0.33396, MAPE = 0.17468
-   - edge_prob = 0.8; MSE = 0.48276, MAPE = 0.27334
-   - edge_prob = 0.9; MSE = 0.24209, MAPE = 0.17750
+GCN:
+  MSE - Individual: 0.631726, Full: 0.533645 (Improvement: +15.53%)
+  MAPE - Individual: 0.233182, Full: 198707299483648.000000 (Improvement: -85215447678854944.00%)
 
- Node size: 25.0
-   - edge_prob = 0.5; MSE = 0.49163, MAPE = 0.29565
-   - edge_prob = 0.6; MSE = 0.36996, MAPE = 0.22455
-   - edge_prob = 0.7; MSE = 0.28332, MAPE = 0.20543
-   - edge_prob = 0.8; MSE = 0.22523, MAPE = 0.18409
-   - edge_prob = 0.9; MSE = 0.45743, MAPE = 0.22116
-
- Full model:
- - num_nodes = 10.0; MSE = 0.38094, MAPE = 0.27873
- - num_nodes = 12.0; MSE = 0.45263, MAPE = 0.33007
- - num_nodes = 15.0; MSE = 0.31308, MAPE = 0.19730
- - num_nodes = 20.0; MSE = 0.35387, MAPE = 0.22719
- - num_nodes = 25.0; MSE = 0.36970, MAPE = 0.23338
