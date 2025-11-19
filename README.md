@@ -5,25 +5,18 @@ Two folders:
 - **NO_NAS_MODELS**
 
 	- ``Classical_Optimizer.py`` : First attempt at optimizing a Maxcut problem with QAOA. Not used, obsolete.
-
 	- ``Create_data.py``: Creation of MaxCut instances.
-
 	- ``DataSetGen.py``: Creation of datasets (Q_values) given a MaxCut instances dataset 
-
 	- ``DataSetGenCircuit.py``: Same as previous but with circuit level information instead.
-
 	- ``Graph_Neural_Network.py``: Definition and training of graph neural network models
-
 	- ``Model_test.py``: First testing of the models. Not used yet.
-
 	- ``Neural_Models_Train.py``: Definition and training of multilayer perceptron
-
 	- ``Results.py``: Creation of graphs and visuals of the training results
-
 	- ``XGBoost_Model_Train.py``: Definition and training of neural models
-	
 	- ``dataset.csv``: MaxCut dataset
-
+	- ``Graph_Neural_Network.py``: which now saves the  graph NN model after training.
+	- ``Model_test.py``:  Implement the testing of the trained XGBoost, MLP, and Graph NN models.
+	- ``Classical_ML_Comp.py``:  Implement comparison QAOA vs QAOA-based ML
 	- ``requirements.txt``: Requirements for installation
 
 - **NAS_MODELS**
