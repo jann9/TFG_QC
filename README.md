@@ -1,6 +1,6 @@
 Two folders:
-- **NO_NAS_MODELS:** Uses the Multi-Layer Perceptron (MLP), and the Graphical Neural Networks (GNET) without any neural architecture search.
-- **NAS_MODELS:** Perform Neural Architecture Search on the Multi-Layer Perceptron (MLP), and the Graphical Neural Networks (GNET), using P3 and LTGA graybox algorithms.
+- **NO_NAS_MODELS:** Uses the Multi-Layer Perceptron (MLP), and the Graphical Neural Networks (GNET) without any Neural Architecture Search (NAS).
+- **NAS_MODELS:** Perform Neural Architecture Search (NAS) on the Multi-Layer Perceptron (MLP), and the Graphical Neural Networks (GNET), using P3 and LTGA graybox algorithms.
 
 - **NO_NAS_MODELS**
 
