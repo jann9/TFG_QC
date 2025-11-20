@@ -34,6 +34,7 @@ Two folders:
   - What is mean/median, size of graphs or executions.
   - Results of test or training? in MLP looks its is testing, while for G-Net, it is only training.
   - Seems test is on Q-values model only (No circuit model)?
+  - The comparison is only for XGBoost and MLP? (see ``model_list = ['xgboost', 'MLP']``)
 
 
 - **TO DO:**
