@@ -50,7 +50,7 @@ class GCNRegressor(torch.nn.Module):
     
 node_sizes = [10, 12, 15, 20, 25]
 edge_probs = [0.5, 0.6, 0.7, 0.8, 0.9]
-model_list = ['xgboost', 'MLP','GCN']
+model_list = ['xgboost', 'MLP']
 num_graphs_per_combination = 10
 base_dataset_dir = "datasets"
 
@@ -719,7 +719,7 @@ def run_timing_comparison():
     """
     node_sizes = [10, 12, 15, 20, 25]
     edge_probs = [0.5, 0.6, 0.7, 0.8, 0.9]
-    model_list = ['xgboost','MLP','GCN']
+    model_list = ['xgboost','MLP']
     num_graphs_per_combination = 10
     base_dataset_dir = "datasets"
     

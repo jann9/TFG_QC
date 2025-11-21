@@ -1,3 +1,6 @@
+**Programmers: :shipit:** Mario (University of Malaga), and Zakaria Abdelmoiz DAHI (Inria, University of Lille). 
+
+
 Two folders:
 - **NO_NAS_MODELS:** Uses the Multi-Layer Perceptron (MLP), and the Graphical Neural Networks (GNET) without any Neural Architecture Search (NAS).
 - **NAS_MODELS:** Perform Neural Architecture Search (NAS) on the Multi-Layer Perceptron (MLP), and the Graphical Neural Networks (GNET), using P3 and LTGA graybox algorithms.
@@ -34,7 +37,7 @@ Two folders:
   - What is mean/median, size of graphs or executions.
   - Results of test or training? in MLP looks its is testing, while for G-Net, it is only training.
   - Seems test is on Q-values model only (No circuit model)?
-  - The comparison is only for XGBoost and MLP? (see ``model_list = ['xgboost', 'MLP']``)
+  - The comparison is only for XGBoost and MLP? (see ``model_list = ['xgboost', 'MLP']``) Added GCN to the models and it generates an error.
 
 
 - **TO DO:**
