@@ -598,7 +598,7 @@ def create_comprehensive_comparison(results, save_prefix="comparison"):
     
     plt.tight_layout()
     plt.savefig(f'{save_prefix}_comprehensive.png', dpi=300, bbox_inches='tight')
-    plt.show()
+    #plt.show()
     
     # === Print Summary Statistics ===
     print("\n" + "="*70)
@@ -710,7 +710,7 @@ def create_detailed_timing_analysis(timing_results):
     
     plt.tight_layout()
     plt.savefig('detailed_timing_analysis.png', dpi=300, bbox_inches='tight')
-    plt.show()
+    #plt.show()
 
 
 def run_timing_comparison():
@@ -719,7 +719,7 @@ def run_timing_comparison():
     """
     node_sizes = [10, 12, 15, 20, 25]
     edge_probs = [0.5, 0.6, 0.7, 0.8, 0.9]
-    model_list = ['xgboost', 'MLP']
+    model_list = ['xgboost','MLP']
     num_graphs_per_combination = 10
     base_dataset_dir = "datasets"
     
