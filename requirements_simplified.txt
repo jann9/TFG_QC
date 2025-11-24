@@ -7,7 +7,7 @@ torch-geometric
 scikit-learn
 xgboost
 pandas
-qiskit==1.4.1
+##qiskit==1.4.1
 qiskit-aer
 qiskit-algorithms
 qiskit-ibm-runtime
