@@ -2,7 +2,6 @@ matplotlib
 networkx
 numpy
 torch
-torchvision
 torch-geometric
 scikit-learn
 xgboost==3.0.0
@@ -13,3 +12,4 @@ qiskit-ibm-runtime
 scipy
 ##qiskit==1.4.1
 ##Install torch CPU not cuda.
+##torchvision

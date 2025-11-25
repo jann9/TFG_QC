@@ -510,8 +510,8 @@ def generate_dataset_with_timing_and_fitness(node_sizes, edge_probs, num_graphs_
             results['model_cuts'][model_name].append(model_cut)
     
     # Create comparison visualizations
-    create_comprehensive_comparison(results)
-    
+    #create_comprehensive_comparison(results)
+    create_comprehensive_comparison_V2(results)
     return results
 
 def create_comprehensive_comparison(results, save_prefix="comparison"):
@@ -647,6 +647,178 @@ def create_comprehensive_comparison(results, save_prefix="comparison"):
         avg_model_ratio = np.mean([c/o for c, o in zip(results['model_cuts'][model_name], optimal_cuts)])
         avg_speedup = avg_classical_time / avg_model_time
         
+        print(f"\n{model_name} Model:")
+        print(f"  Avg Time: {avg_model_time:.4f}s (avg speedup: {avg_speedup:.1f}x)")
+        print(f"  Avg Approximation Ratio: {avg_model_ratio:.2%}")
+        print(f"  Quality Difference: {(avg_model_ratio - avg_classical_ratio):+.2%}")
+
+
+def create_comprehensive_comparison_V2(results, save_prefix="comparison"):
+    """
+    Creates comprehensive comparison graphs for both timing and fitness
+    """
+    fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+
+    node_sizes = results['node_sizes']
+    classical_times = results['classical_times']
+    classical_cuts = results['classical_cuts']
+    optimal_cuts = results['optimal_cuts']
+
+    colors = ['blue', 'green', 'purple', 'orange', 'brown']
+
+    # === Plot 1: Time Comparison (Linear Scale) ===
+    ax1 = axes[0, 0]
+    ax1.plot(node_sizes, classical_times, 'o-', linewidth=2, markersize=8,
+             label='Classical QAOA', color='red', alpha=0.8)
+
+    for i, (model_name, times) in enumerate(results['model_times'].items()):
+        ax1.plot(node_sizes, times, 's--', linewidth=2, markersize=8,
+                 label=f'{model_name}', color=colors[i % len(colors)], alpha=0.8)
+
+    ax1.set_xlabel('Number of Nodes', fontsize=12)
+    ax1.set_ylabel('Time (seconds)', fontsize=12)
+    ax1.set_title('Execution Time Comparison', fontsize=14, fontweight='bold')
+    ax1.legend(fontsize=10)
+    ax1.grid(True, alpha=0.3)
+
+    # === Plot 2: Time Comparison (Log Scale) ===
+    ax2 = axes[0, 1]
+    ax2.plot(node_sizes, classical_times, 'o-', linewidth=2, markersize=8,
+             label='Classical QAOA', color='red', alpha=0.8)
+
+    for i, (model_name, times) in enumerate(results['model_times'].items()):
+        ax2.plot(node_sizes, times, 's--', linewidth=2, markersize=8,
+                 label=f'{model_name}', color=colors[i % len(colors)], alpha=0.8)
+
+    ax2.set_xlabel('Number of Nodes', fontsize=12)
+    ax2.set_ylabel('Time (seconds, log scale)', fontsize=12)
+    ax2.set_title('Execution Time Comparison (Log Scale)', fontsize=14, fontweight='bold')
+    ax2.legend(fontsize=10)
+    ax2.grid(True, alpha=0.3)
+    ax2.set_yscale('log')
+
+    # === Plot 3: Cut Quality (Absolute Values) ===
+    ax3 = axes[1, 0]
+    ax3.plot(node_sizes, optimal_cuts, 'k*-', linewidth=3, markersize=12,
+             label='Optimal/Best Known', zorder=10, alpha=0.9)
+    ax3.plot(node_sizes, classical_cuts, 'o-', linewidth=2, markersize=8,
+             label='Classical QAOA', color='red', alpha=0.8)
+
+    for i, (model_name, cuts) in enumerate(results['model_cuts'].items()):
+        ax3.plot(node_sizes, cuts, 's--', linewidth=2, markersize=8,
+                 label=f'{model_name}', color=colors[i % len(colors)], alpha=0.8)
+
+    ax3.set_xlabel('Number of Nodes', fontsize=12)
+    ax3.set_ylabel('Cut Value', fontsize=12)
+    ax3.set_title('Solution Quality: Max-Cut Values', fontsize=14, fontweight='bold')
+    ax3.legend(fontsize=10)
+    ax3.grid(True, alpha=0.3)
+
+    # === Plot 4: Approximation Ratio ===
+    ax4 = axes[1, 1]
+
+    # Calculate approximation ratios
+    classical_ratios = [c / o if o > 0 else 0 for c, o in zip(classical_cuts, optimal_cuts)]
+    ax4.plot(node_sizes, classical_ratios, 'o-', linewidth=2, markersize=8,
+             label='Classical QAOA', color='red', alpha=0.8)
+
+    for i, (model_name, cuts) in enumerate(results['model_cuts'].items()):
+        model_ratios = [c / o if o > 0 else 0 for c, o in zip(cuts, optimal_cuts)]
+        ax4.plot(node_sizes, model_ratios, 's--', linewidth=2, markersize=8,
+                 label=f'{model_name}', color=colors[i % len(colors)], alpha=0.8)
+
+    ax4.axhline(y=1.0, color='k', linestyle=':', linewidth=2, alpha=0.5, label='Optimal')
+    ax4.set_xlabel('Number of Nodes', fontsize=12)
+    ax4.set_ylabel('Approximation Ratio', fontsize=12)
+    ax4.set_title('Solution Quality: Approximation Ratio (Cut/Optimal)', fontsize=14, fontweight='bold')
+    ax4.legend(fontsize=10)
+    ax4.grid(True, alpha=0.3)
+    ax4.set_ylim([0, 1.1])
+
+    plt.tight_layout()
+    plt.savefig(f'{save_prefix}_comprehensive.png', dpi=300, bbox_inches='tight')
+    # plt.show()
+
+    # === Print Summary Statistics ===
+    print("\n" + "=" * 70)
+    print("COMPREHENSIVE COMPARISON SUMMARY")
+    print("=" * 70)
+    data_node_size=[]
+    data_model=[]
+    data_time=[]
+    data_time_speedup=[]
+    data_cut=[]
+    data_cut_optimal=[]
+    data_cuts_ratio=[]
+    data_vanilla_vs_ml=[]
+
+    for i, num_nodes in enumerate(node_sizes):
+        print(f"\n{'=' * 70}")
+        print(f"Node Size: {num_nodes} | Optimal Cut: {optimal_cuts[i]}")
+        print(f"{'=' * 70}")
+
+        # Classical results
+        classical_ratio = classical_cuts[i] / optimal_cuts[i] if optimal_cuts[i] > 0 else 0
+        print(f"\nClassical QAOA:")
+        print(f"  Time: {classical_times[i]:.4f}s")
+        print(f"  Cut: {classical_cuts[i]}/{optimal_cuts[i]} ({classical_ratio:.2%})")
+
+        # STore Vanilla QAOA Results
+        data_node_size.append(num_nodes)
+        data_model.append('Vanilla')
+        data_time.append(classical_times[i])
+        data_time_speedup.append(0) # No speedup
+        data_cut.append(classical_cuts[i])
+        data_cut_optimal.append(optimal_cuts[i])
+        data_cuts_ratio.append(classical_ratio)
+        data_vanilla_vs_ml.append(0) # it is the same as vanilla
+
+        # Model results
+
+        for model_name in results['model_times'].keys():
+            model_time = results['model_times'][model_name][i]
+            model_cut = results['model_cuts'][model_name][i]
+            model_ratio = model_cut / optimal_cuts[i] if optimal_cuts[i] > 0 else 0
+
+            speedup = classical_times[i] / model_time
+            quality_diff = model_ratio - classical_ratio
+
+            print(f"\n{model_name} Model:")
+            print(f"  Time: {model_time:.4f}s (speedup: {speedup:.1f}x)")
+            print(f"  Cut: {model_cut}/{optimal_cuts[i]} ({model_ratio:.2%})")
+            print(f"  Quality vs Classical: {quality_diff:+.2%}")
+
+            # ML-based results
+            data_node_size.append(num_nodes)
+            data_model.append(model_name)
+            data_time.append(model_time)
+            data_time_speedup.append(speedup)  # No speedup
+            data_cut.append(model_cut)
+            data_cut_optimal.append(optimal_cuts[i])
+            data_cuts_ratio.append(model_ratio)
+            data_vanilla_vs_ml.append(quality_diff)
+
+    data = {'Size':data_node_size, 'Approach': data_model, 'Time': data_time, 'Time Speed Up': data_time_speedup, 'Cut': data_cut, 'Optimal Cut': data_cut_optimal,'Cut Ratio': data_cuts_ratio, 'Tradeoff':  data_vanilla_vs_ml}
+    results_formatted = pd.DataFrame(data)
+    results_formatted.to_csv('Models/vanila_vs_ml.csv')
+
+    # Overall averages
+    print(f"\n{'=' * 70}")
+    print("OVERALL AVERAGES")
+    print(f"{'=' * 70}")
+
+    avg_classical_time = np.mean(classical_times)
+    avg_classical_ratio = np.mean([c / o for c, o in zip(classical_cuts, optimal_cuts)])
+
+    print(f"\nClassical QAOA:")
+    print(f"  Avg Time: {avg_classical_time:.4f}s")
+    print(f"  Avg Approximation Ratio: {avg_classical_ratio:.2%}")
+
+    for model_name in results['model_times'].keys():
+        avg_model_time = np.mean(results['model_times'][model_name])
+        avg_model_ratio = np.mean([c / o for c, o in zip(results['model_cuts'][model_name], optimal_cuts)])
+        avg_speedup = avg_classical_time / avg_model_time
+
         print(f"\n{model_name} Model:")
         print(f"  Avg Time: {avg_model_time:.4f}s (avg speedup: {avg_speedup:.1f}x)")
         print(f"  Avg Approximation Ratio: {avg_model_ratio:.2%}")
