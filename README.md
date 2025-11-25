@@ -54,4 +54,4 @@ Two folders:
     - [ ]  manuscript writing.
 
 
-    ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](/NAS_MODELS/Call_Schema.jpeg)
+    ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](Call_Schema.jpeg)
