@@ -1,0 +1,136 @@
+
+ Training on dataset_10_nodes.csv...
+ Root Mean Squared Error: 0.61183
+ Mean Absolute Percentage Error: 0.42688
+ Training time:  0.51746
+ Model saved as Models/xgboost_model_10.pkl
+
+ Training on dataset_10_nodes_Circuit.csv...
+ Root Mean Squared Error: 0.77393
+ Mean Absolute Percentage Error: 0.40798
+ Training time:  0.37977
+ Model saved as Models/xgboost_model_10_Circuit.pkl
+
+ Training on dataset_12_nodes.csv...
+ Root Mean Squared Error: 0.98542
+ Mean Absolute Percentage Error: 0.66534
+ Training time:  0.54367
+ Model saved as Models/xgboost_model_12.pkl
+
+ Training on dataset_12_nodes_Circuit.csv...
+ Root Mean Squared Error: 1.09762
+ Mean Absolute Percentage Error: 0.66033
+ Training time:  0.30087
+ Model saved as Models/xgboost_model_12_Circuit.pkl
+
+ Training on dataset_15_nodes.csv...
+ Root Mean Squared Error: 0.63002
+ Mean Absolute Percentage Error: 0.19947
+ Training time:  0.48020
+ Model saved as Models/xgboost_model_15.pkl
+
+ Training on dataset_15_nodes_Circuit.csv...
+ Root Mean Squared Error: 0.80075
+ Mean Absolute Percentage Error: 0.23256
+ Training time:  0.26813
+ Model saved as Models/xgboost_model_15_Circuit.pkl
+
+ Training on dataset_20_nodes.csv...
+ Root Mean Squared Error: 0.62797
+ Mean Absolute Percentage Error: 0.26437
+ Training time:  0.61765
+ Model saved as Models/xgboost_model_20.pkl
+
+ Training on dataset_20_nodes_Circuit.csv...
+ Root Mean Squared Error: 0.85122
+ Mean Absolute Percentage Error: 0.32973
+ Training time:  0.23800
+ Model saved as Models/xgboost_model_20_Circuit.pkl
+
+ Training on dataset_25_nodes.csv...
+ Root Mean Squared Error: 0.75148
+ Mean Absolute Percentage Error: 0.23823
+ Training time:  0.78262
+ Model saved as Models/xgboost_model_25.pkl
+
+ Training on dataset_25_nodes_Circuit.csv...
+ Root Mean Squared Error: 0.69865
+ Mean Absolute Percentage Error: 0.18869
+ Training time:  0.23663
+ Model saved as Models/xgboost_model_25_Circuit.pkl
+
+ Training on dataset_full.csv...
+ Root Mean Squared Error: 0.71282
+ Mean Absolute Percentage Error: 0.30580
+ Training time:  2.91709
+ Model saved as Models/xgboost_model_full.pkl
+
+ Training on dataset_full_Circuit.csv...
+ Root Mean Squared Error: 0.75456
+ Mean Absolute Percentage Error: 0.29976
+ Training time:  0.31169
+ Model saved as Models/xgboost_model_full_Circuit.pkl
+
+=== Testing Full Models on Individual Node Test Sets ===
+Full Q-values model loaded successfully
+
+Testing full Q-values model on 10 nodes subset...
+  RMSE on 10 nodes subset: 0.22309
+  MAPE on 10 nodes subset: 0.02678
+
+Testing full Q-values model on 12 nodes subset...
+  RMSE on 12 nodes subset: 0.32641
+  MAPE on 12 nodes subset: 0.26721
+
+Testing full Q-values model on 15 nodes subset...
+  RMSE on 15 nodes subset: 0.13485
+  MAPE on 15 nodes subset: 0.01590
+
+Testing full Q-values model on 20 nodes subset...
+  RMSE on 20 nodes subset: 0.40605
+  MAPE on 20 nodes subset: 0.09309
+
+Testing full Q-values model on 25 nodes subset...
+  RMSE on 25 nodes subset: 0.19719
+  MAPE on 25 nodes subset: 0.02696
+
+Metrics saved to Models/XGB_Training_metrics.csv
+
+ **Final Training Results:**
+
+ **Final Training Results:**
+node_size          model_type  dataset_size  n_features  n_outputs     rmse     mape  training_time                     model_file
+       10            Q_values            50          55          4 0.611832 0.426885       0.517456           xgboost_model_10.pkl
+       10             Circuit            50           5          4 0.773931 0.407978       0.379775   xgboost_model_10_Circuit.pkl
+       12            Q_values            50          78          4 0.985424 0.665339       0.543667           xgboost_model_12.pkl
+       12             Circuit            50           5          4 1.097616 0.660332       0.300875   xgboost_model_12_Circuit.pkl
+       15            Q_values            50         120          4 0.630019 0.199471       0.480201           xgboost_model_15.pkl
+       15             Circuit            50           5          4 0.800749 0.232561       0.268127   xgboost_model_15_Circuit.pkl
+       20            Q_values            50         210          4 0.627970 0.264373       0.617653           xgboost_model_20.pkl
+       20             Circuit            50           5          4 0.851224 0.329730       0.237998   xgboost_model_20_Circuit.pkl
+       25            Q_values            50         325          4 0.751480 0.238227       0.782623           xgboost_model_25.pkl
+       25             Circuit            50           5          4 0.698652 0.188693       0.236629   xgboost_model_25_Circuit.pkl
+     full            Q_values           250         325          4 0.712815 0.305798       2.917094         xgboost_model_full.pkl
+     full             Circuit           250           5          4 0.754562 0.299760       0.311687 xgboost_model_full_Circuit.pkl
+       10 Q_values_full_model            50         325          4 0.223086 0.026776       0.000000  Models/xgboost_model_full.pkl
+       12 Q_values_full_model            50         325          4 0.326409 0.267205       0.000000  Models/xgboost_model_full.pkl
+       15 Q_values_full_model            50         325          4 0.134851 0.015899       0.000000  Models/xgboost_model_full.pkl
+       20 Q_values_full_model            50         325          4 0.406049 0.093089       0.000000  Models/xgboost_model_full.pkl
+       25 Q_values_full_model            50         325          4 0.197187 0.026965       0.000000  Models/xgboost_model_full.pkl
+
+ Training complete for all datasets!
+  adding: Models/ (stored 0%)
+  adding: Models/xgboost_model_12_Circuit.pkl (deflated 83%)
+  adding: Models/xgboost_model_15_Circuit.pkl (deflated 83%)
+  adding: Models/xgboost_model_10.pkl (deflated 85%)
+  adding: Models/xgboost_model_full.pkl (deflated 79%)
+  adding: Models/xgboost_model_12.pkl (deflated 86%)
+  adding: Models/xgboost_model_full_Circuit.pkl (deflated 81%)
+  adding: Models/XGB_Training_results.txt (deflated 72%)
+  adding: Models/xgboost_model_20_Circuit.pkl (deflated 83%)
+  adding: Models/xgboost_model_25.pkl (deflated 87%)
+  adding: Models/xgboost_model_15.pkl (deflated 87%)
+  adding: Models/xgboost_model_10_Circuit.pkl (deflated 83%)
+  adding: Models/xgboost_model_20.pkl (deflated 87%)
+  adding: Models/xgboost_model_25_Circuit.pkl (deflated 83%)
+  adding: Models/XGB_Training_metrics.csv (deflated 61%)

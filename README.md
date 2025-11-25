@@ -21,6 +21,9 @@ Two folders:
 	- ``Model_test.py``:  Implement the testing of the trained XGBoost, MLP, and Graph NN models.
 	- ``Classical_ML_Comp.py``:  Implement comparison QAOA vs QAOA-based ML
 	- ``requirements.txt``: Requirements for installation
+	- ``Process_Stats.py``: Process the results of the ``n`` executions
+	- ``slurm_launch.sh``: launch ``n`` experiments on slurm cluster
+
 
 - **NAS_MODELS**
 	- **GNET:**

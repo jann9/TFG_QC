@@ -1,0 +1,38 @@
+Model Training Metrics
+========================================
+
+
+ Node size: 10
+   - RMSE = 0.59547, MAPE = 0.25240, TIME =  0.01119
+
+ Node size: 10 Circuit
+   - RMSE = 0.54834, MAPE = 0.38342, TIME =  0.01098
+
+ Node size: 12
+   - RMSE = 0.72025, MAPE = 0.57262, TIME =  0.01752
+
+ Node size: 12 Circuit
+   - RMSE = 0.85568, MAPE = 0.52156, TIME =  0.01043
+
+ Node size: 15
+   - RMSE = 0.69885, MAPE = 0.29552, TIME =  0.05041
+
+ Node size: 15 Circuit
+   - RMSE = 0.53326, MAPE = 0.16996, TIME =  0.01002
+
+ Node size: 20
+   - RMSE = 0.60416, MAPE = 0.23544, TIME =  0.04011
+
+ Node size: 20 Circuit
+   - RMSE = 0.61086, MAPE = 0.25073, TIME =  0.02355
+
+ Node size: 25
+   - RMSE = 0.53879, MAPE = 0.17993, TIME =  0.06778
+
+ Node size: 25 Circuit
+   - RMSE = 0.68830, MAPE = 0.21505, TIME =  0.01039
+
+ Node size: full
+   - RMSE = 0.61844, MAPE = 0.24197, TIME =  0.09489
+
+ Node size: full Circuit
