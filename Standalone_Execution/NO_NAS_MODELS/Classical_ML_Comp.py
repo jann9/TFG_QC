@@ -463,7 +463,10 @@ def generate_dataset_with_timing_and_fitness(node_sizes, edge_probs, num_graphs_
         for model_name in model_list:
             start_time = time.time()
             print(str(sys.argv[1]))
-            model_path = f"Models/ml_vs_ml/{model_name}/Execution_{str(sys.argv[1])}/Models/{model_name}_model_{int(num_nodes)}.pkl"
+            if model_name=="MLP":
+                model_path = f"Models/ml_vs_ml/{model_name}/Execution_{str(sys.argv[1])}/Models/{model_name}_model_{int(num_nodes)}.pkl"
+            elsif model_name=="xgboost":
+                model_path = f"Models/ml_vs_ml/{model_name}/Execution_{str(sys.argv[1])}/Models/{model_name}_model_full.pkl"            
             
             
             # Load model and predict QAOA parameters
