@@ -28,7 +28,7 @@ import networkx as nx
 from qiskit_ibm_runtime import SamplerV2 as Sampler
 import random
 import time
-
+import sys
 
 
 class GCNRegressor(torch.nn.Module):
@@ -462,7 +462,8 @@ def generate_dataset_with_timing_and_fitness(node_sizes, edge_probs, num_graphs_
         # === ML Models ===
         for model_name in model_list:
             start_time = time.time()
-            model_path = f"Models/{model_name}_model_{int(num_nodes)}.pkl"
+            print(str(sys.argv[1]))
+            model_path = f"Models/ml_vs_ml/{model_name}/Execution_{str(sys.argv[1])}/Models/{model_name}_model_{int(num_nodes)}.pkl"
             
             
             # Load model and predict QAOA parameters
@@ -597,7 +598,7 @@ def create_comprehensive_comparison(results, save_prefix="comparison"):
     ax4.set_ylim([0, 1.1])
     
     plt.tight_layout()
-    plt.savefig(f'{save_prefix}_comprehensive.png', dpi=300, bbox_inches='tight')
+    plt.savefig(f'Models/qaoa_vs_ml/execution_{str(sys.argv[1])}/{save_prefix}_comprehensive.png', dpi=300, bbox_inches='tight')
     #plt.show()
     
     # === Print Summary Statistics ===
@@ -736,7 +737,7 @@ def create_comprehensive_comparison_V2(results, save_prefix="comparison"):
     ax4.set_ylim([0, 1.1])
 
     plt.tight_layout()
-    plt.savefig(f'{save_prefix}_comprehensive.png', dpi=300, bbox_inches='tight')
+    plt.savefig(f'Models/qaoa_vs_ml/execution_{str(sys.argv[1])}/{save_prefix}_comprehensive.png', dpi=300, bbox_inches='tight')
     # plt.show()
 
     # === Print Summary Statistics ===
@@ -798,9 +799,9 @@ def create_comprehensive_comparison_V2(results, save_prefix="comparison"):
             data_cuts_ratio.append(model_ratio)
             data_vanilla_vs_ml.append(quality_diff)
 
-    data = {'Size':data_node_size, 'Approach': data_model, 'Time': data_time, 'Time Speed Up': data_time_speedup, 'Cut': data_cut, 'Optimal Cut': data_cut_optimal,'Cut Ratio': data_cuts_ratio, 'Tradeoff':  data_vanilla_vs_ml}
+    data = {'Size':data_node_size, 'Approach': data_model, 'Time': data_time, 'Time_Speed_Up': data_time_speedup, 'Cut': data_cut, 'Optimal_Cut': data_cut_optimal,'Cut_Ratio': data_cuts_ratio, 'Tradeoff':  data_vanilla_vs_ml}
     results_formatted = pd.DataFrame(data)
-    results_formatted.to_csv('Models/vanila_vs_ml.csv')
+    results_formatted.to_csv('Models/qaoa_vs_ml/execution_'+ str(sys.argv[1])+'/vanila_vs_ml.csv')
 
     # Overall averages
     print(f"\n{'=' * 70}")
@@ -881,7 +882,7 @@ def create_detailed_timing_analysis(timing_results):
     ax4.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig('detailed_timing_analysis.png', dpi=300, bbox_inches='tight')
+    plt.savefig('Models/qaoa_vs_ml/execution_'+ str(sys.argv[1])+'/detailed_timing_analysis.png', dpi=300, bbox_inches='tight')
     #plt.show()
 
 

@@ -54,8 +54,8 @@ do
   mkdir -p ${dir_temp}/datasets
   cp -r datasets/* ${dir_temp}/datasets/
   cp -r *.py ${dir_temp}
-  cp -r ml_vs_ml/MLP/Execution_${SLURM_ARRAY_TASK_ID}/Models/*.pkl ${dir_temp}/Models
-  cp -r ml_vs_ml/xgboost/Execution_${SLURM_ARRAY_TASK_ID}/Models/*.pkl ${dir_temp}/Models
+  cp -r Models/ml_vs_ml/MLP/Execution_${SLURM_ARRAY_TASK_ID}/Models/*.pkl ${dir_temp}/Models
+  cp -r Models/ml_vs_ml/xgboost/Execution_${SLURM_ARRAY_TASK_ID}/Models/*.pkl ${dir_temp}/Models
   cd ${dir_temp}
   python Classical_ML_Comp.py
   zip -r Execution_${SLURM_ARRAY_TASK_ID}.zip Models

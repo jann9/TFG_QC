@@ -597,7 +597,7 @@ def create_comprehensive_comparison(results, save_prefix="comparison"):
     ax4.set_ylim([0, 1.1])
     
     plt.tight_layout()
-    plt.savefig(f'{save_prefix}_comprehensive.png', dpi=300, bbox_inches='tight')
+    plt.savefig(f'Models/{save_prefix}_comprehensive.png', dpi=300, bbox_inches='tight')
     #plt.show()
     
     # === Print Summary Statistics ===
@@ -709,7 +709,7 @@ def create_detailed_timing_analysis(timing_results):
     ax4.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig('detailed_timing_analysis.png', dpi=300, bbox_inches='tight')
+    plt.savefig('Models/detailed_timing_analysis.png', dpi=300, bbox_inches='tight')
     #plt.show()
 
 
