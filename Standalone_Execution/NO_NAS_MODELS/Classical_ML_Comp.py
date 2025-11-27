@@ -461,11 +461,13 @@ def generate_dataset_with_timing_and_fitness(node_sizes, edge_probs, num_graphs_
         
         # === ML Models ===
         for model_name in model_list:
-            start_time = time.time()
-            print(str(sys.argv[1]))
+            print(f'Graph Size:{num_nodes}')
+            print(f'Execution N°:{str(sys.argv[1])}')
+            print(f'Model:{model_name}')
+            start_time = time.time()            
             if model_name=="MLP":
                 model_path = f"Models/ml_vs_ml/{model_name}/Execution_{str(sys.argv[1])}/Models/{model_name}_model_{int(num_nodes)}.pkl"
-            elsif model_name=="xgboost":
+            elif model_name=="xgboost":
                 model_path = f"Models/ml_vs_ml/{model_name}/Execution_{str(sys.argv[1])}/Models/{model_name}_model_full.pkl"            
             
             
@@ -478,7 +480,15 @@ def generate_dataset_with_timing_and_fitness(node_sizes, edge_probs, num_graphs_
                 for j in range(i, num_nodes):
                     q_flat.append(Q[i, j])
             
-            X = np.array(q_flat).reshape(1, -1)
+            if model_name=="MLP":
+                X = np.array(q_flat).reshape(1, -1)
+            elif model_name=="xgboost":
+                upper_triangular=(node_sizes[-1]*(node_sizes[-1]+1))/2
+                X_core = np.array(q_flat).reshape(1, -1)
+                left_to_fill= upper_triangular - X_core.size 
+                padding= np.zeros(int(left_to_fill))
+                X = np.append(X_core,padding)
+                X = np.reshape(X,(1,int(upper_triangular)))
             predicted_params = model.predict(X)[0]  # This should be [gamma1, beta1, gamma2, beta2]
             
             # Now run QAOA circuit with ML-predicted parameters (no optimization!)
