@@ -23,6 +23,11 @@ Two folders:
 	- ``requirements.txt``: Requirements for installation
 	- ``Process_Stats.py``: Process the results of the ``n`` executions
 	- ``slurm_launch.sh``: launch ``n`` experiments on slurm cluster
+	- ``bars_stats_ml_vs_ml.py``: launches the stats bar of the 32 executions ML vs ML
+	- ``bars_stats_vanilla_vs_ml.py``: launches the stats bar of the 32 executions QAOA vs ML
+	- ``bash_launch_qaoa_vs_ml.sh``: launches 32 execution of QAOA vs ML locally
+	- ``slurm_launch_ml_vs_ml.sh``: launches 32 execution of ML vs ML on a cluster
+	- ``slurm_launch_qaoa_vs_ml.sh``: launches 32 execution of QAOA vs ML on a cluster
 
 
 - **NAS_MODELS**

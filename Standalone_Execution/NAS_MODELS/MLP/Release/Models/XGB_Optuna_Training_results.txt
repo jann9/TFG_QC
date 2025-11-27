@@ -1,5 +1,0 @@
-XGBoost Model Training with Optuna Hyperparameter Tuning
-============================================================
-
-Number of Optuna trials per model: 50
-

@@ -1,7 +1,0 @@
-node_size,model_type,test_size,rmse,mape,training_time,model_file
-10,Q_values,0.2,0.6294855,0.22275881,9.394249677658081,GNN_model_10.pkl
-12,Q_values,0.2,0.6682143,0.24200258,8.743314266204834,GNN_model_12.pkl
-15,Q_values,0.2,0.9359755,0.20721984,8.85366415977478,GNN_model_15.pkl
-20,Q_values,0.2,1.0178311,0.24318734,9.17174768447876,GNN_model_20.pkl
-25,Q_values,0.2,1.881517,0.28856134,9.17365550994873,GNN_model_25.pkl
-full,Q_values,0.2,0.87498814,413396940000000.0,44.47778534889221,GNN_model_full.pkl
