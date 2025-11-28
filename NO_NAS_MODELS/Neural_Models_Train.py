@@ -8,6 +8,8 @@ from sklearn.metrics import mean_absolute_percentage_error
 import joblib
 import os
 import time
+from numpy import random
+
 
 # Define the datasets to iterate over
 node_sizes = [10, 12, 15, 20, 25]  # Different dataset sizes
@@ -18,7 +20,7 @@ metrics_csv = "Models/MLP_Training_metrics.csv"
 # Prepare a dictionary to store results
 results_data = []
 
-
+seeding=random.randint(100)
 
 # === Start output file ===
 with open(output_file, "w") as f:
@@ -61,7 +63,7 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
         hidden_layer_sizes= (128, 64, 32),
         activation= "logistic",
         solver= "lbfgs",
-        random_state=1, 
+        random_state=seeding,
         max_iter=5000, 
         tol=0.1)
 
@@ -140,7 +142,7 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
         hidden_layer_sizes= (128, 64, 32),
         activation= "logistic",
         solver= "lbfgs",
-        random_state=1, 
+        random_state=seeding,
         max_iter=5000, 
         tol=0.1)
 

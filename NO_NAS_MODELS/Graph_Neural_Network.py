@@ -10,6 +10,7 @@ import numpy as np
 import time
 from sklearn.metrics import mean_squared_error, mean_absolute_percentage_error
 from sklearn.model_selection import train_test_split
+from numpy import random
 
 # Custom GNN model for regression
 class GCNRegressor(torch.nn.Module):

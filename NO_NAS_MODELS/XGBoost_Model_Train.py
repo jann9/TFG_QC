@@ -7,6 +7,8 @@ from sklearn.metrics import mean_absolute_percentage_error
 import joblib
 import os
 import time
+from numpy import random
+
 
 # Define the datasets to iterate over
 node_sizes = [10, 12, 15, 20, 25]  # Different dataset sizes
@@ -16,6 +18,9 @@ metrics_csv = "Models/XGB_Training_metrics.csv"
 
 # Prepare a dictionary to store results
 results_data = []
+
+seeding=random.randint(100)
+
 
 # === Start output file ===
 with open(output_file, "w") as f:
@@ -62,7 +67,7 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
         learning_rate=0.05,  # Slower learning
         subsample=0.8,  # Use 80% of data per tree
         colsample_bytree=0.8,  # Use 80% of features per tree
-        random_state=42
+        random_state=seeding
     )
 
     # Train the model
@@ -140,7 +145,7 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
         learning_rate=0.05,  # Slower learning
         subsample=0.8,  # Use 80% of data per tree
         colsample_bytree=0.8,  # Use 80% of features per tree
-        random_state=42
+        random_state=seeding
     )
 
     # Train the model
