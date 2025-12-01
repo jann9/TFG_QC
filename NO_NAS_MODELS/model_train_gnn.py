@@ -76,8 +76,8 @@ def load_graph_dataset(path,num_nodes):
 
 
 base_dir = "datasets"  # Directory where datasets are stored
-output_file = "Models/Graph_Neural_Training_results.txt"
-metrics_csv = "Models/Graph_Neural_Training_metrics.csv"
+output_file = "Models/ml_vs_ml/gnn/Graph_Neural_Training_results.txt"
+metrics_csv = "Models/ml_vs_ml/gnn/Graph_Neural_Training_metrics.csv"
 node_sizes = [10, 12, 15, 20, 25]  # Different dataset sizes
 
 # Prepare a dictionary to store results
@@ -168,7 +168,7 @@ for num_nodes in node_sizes + ["full"]:
             f.write(f"   - RMSE = {rmse:.5f}, MAPE = {mape:.5f}, TIME = {train_time: .5f}\n")
     
     # Save the trained model as .pkl file
-    model_save_path = f"Models/GCN_model_{num_nodes}.pkl"
+    model_save_path = f"Models/ml_vs_ml/gnn/GCN_model_{num_nodes}.pkl"
     os.makedirs("Models", exist_ok=True)
     torch.save(model.state_dict(), model_save_path)
     print(f"Model saved to {model_save_path}")

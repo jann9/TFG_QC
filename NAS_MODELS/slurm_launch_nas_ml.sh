@@ -2,7 +2,7 @@
 # Leave only one comment symbol on selected options
 # Those with two commets will be ignored:
 # The name to show in queue lists for this job:
-#SBATCH -J ML_QAOA
+#SBATCH -J ML_NAS_QAOA
 
 # Number of desired cpus (can be in any node):
 ##SBATCH --ntasks=1
@@ -43,23 +43,13 @@
 
 # the program to execute with its parameters:
 mkdir logs
-mkdir -p Models/ml_vs_ml/mlp
-mkdir -p Models/ml_vs_ml/gnn
-mkdir -p Models/ml_vs_ml/xgboost
+mkdir Models
 source ~/environement/env_ml_qaoa/bin/activate
 origin=`pwd`
 dir_temp=${LOCALSCRATCH}${USER}/${SLURM_JOB_ID}/job_${SLURM_ARRAY_TASK_ID}
-mkdir -p ${dir_temp}/Models/ml_vs_ml/mlp
-mkdir -p ${dir_temp}/Models/ml_vs_ml/gnn
-mkdir -p ${dir_temp}/Models/ml_vs_ml/xgboost
-mkdir -p ${dir_temp}/datasets
-cp -r datasets/* ${dir_temp}/datasets/
-cp -r *.py ${dir_temp}
+cp -r MLP/* ${dir_temp}
 cd ${dir_temp}
-ml_tech=('mlp' 'xgboost' 'gnn')
-for tech in "${ml_tech[@]}"
-do
-  python model_train_${tech}.py
-done
-zip -r execution_${SLURM_ARRAY_TASK_ID}.zip Models/ml_vsml/*
-mv execution_${SLURM_ARRAY_TASK_ID}.zip ${origin}/Models/ml_vs_ml
+bash alg_launcher_slurm.sh
+
+zip -r Execution_${SLURM_ARRAY_TASK_ID}.zip Models
+mv Execution_${SLURM_ARRAY_TASK_ID}.zip ${origin}/Models/ml_vs_ml

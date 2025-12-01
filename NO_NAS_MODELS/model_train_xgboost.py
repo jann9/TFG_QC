@@ -13,8 +13,8 @@ from numpy import random
 # Define the datasets to iterate over
 node_sizes = [10, 12, 15, 20, 25]  # Different dataset sizes
 base_dir = "datasets"  # Directory where datasets are stored
-output_file = "Models/XGB_Training_results.txt"
-metrics_csv = "Models/XGB_Training_metrics.csv" 
+output_file = "Models/ml_vs_ml/xgboost/XGB_Training_results.txt"
+metrics_csv = "Models/ml_vs_ml/xgboost/XGB_Training_metrics.csv"
 
 # Prepare a dictionary to store results
 results_data = []
@@ -91,7 +91,8 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
         'rmse': rmse,
         'mape': mape,
         'training_time': train_time,
-        'model_file': f"xgboost_model_{num_nodes}.pkl"
+        'model_file': f"xgboost_model_{num_nodes}.pkl",
+        'seeding': seeding
     })
     
     
@@ -101,7 +102,7 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
     with open(output_file, "a") as f:
             f.write(f"   - RMSE = {rmse:.5f}, MAPE = {mape:.5f}, TIME = {train_time: .5f}\n")
     # Save the trained model
-    model_filename = f"Models/xgboost_model_{num_nodes}.pkl"
+    model_filename = f"Models/ml_vs_ml/xgboost/xgboost_model_{num_nodes}.pkl"
     joblib.dump(model, model_filename)
     print(f" Model saved as {model_filename}")
     
@@ -168,7 +169,8 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
         'rmse': rmse,
         'mape': mape,
         'training_time': train_time,
-        'model_file': f"xgboost_model_{num_nodes}_Circuit.pkl"
+        'model_file': f"xgboost_model_{num_nodes}_Circuit.pkl",
+        'seeding': seeding
     })
     
     print(f" Root Mean Squared Error: {rmse:.5f}")
@@ -177,7 +179,7 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
     with open(output_file, "a") as f:
             f.write(f"   - RMSE = {rmse:.5f}, MAPE = {mape:.5f}, TIME = {train_time: .5f}\n")
     # Save the trained model
-    model_filename = f"Models/xgboost_model_{num_nodes}_Circuit.pkl"
+    model_filename = f"Models/ml_vs_ml/xgboost/xgboost_model_{num_nodes}_Circuit.pkl"
     joblib.dump(model, model_filename)
     print(f" Model saved as {model_filename}")
 
@@ -186,7 +188,7 @@ for num_nodes in node_sizes + ["full"]:  # Also include the full dataset
 print("\n=== Testing Full Models on Individual Node Test Sets ===")
 
 # Test Q-values full model on each node size subset from the full dataset
-full_q_model_path = "Models/xgboost_model_full.pkl"
+full_q_model_path = "Models/ml_vs_ml/xgboost/xgboost_model_full.pkl"
 full_dataset_path = os.path.join(base_dir, "dataset_full.csv")
 
 if os.path.exists(full_q_model_path) and os.path.exists(full_dataset_path):
@@ -233,7 +235,8 @@ if os.path.exists(full_q_model_path) and os.path.exists(full_dataset_path):
             'rmse': rmse,
             'mape': mape,
             'training_time': 0,  # No training time for testing
-            'model_file': full_q_model_path
+            'model_file': full_q_model_path,
+            'seeding': seeding
         })
         
         print(f"  RMSE on {num_nodes} nodes subset: {rmse:.5f}")

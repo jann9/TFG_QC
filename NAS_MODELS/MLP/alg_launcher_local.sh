@@ -1,4 +1,6 @@
-graph_size=(10 12 15 20 25)
+mkdir Models
+#graph_size=(10 12 15 20 25)
+graph_size=(10)
 for node_size in "${graph_size[@]}"
 do
   if [ $node_size -eq 10 ]; then
@@ -12,5 +14,5 @@ do
   chmod +x ml_launcher.sh
   make P3
   ./P3 config/default.cfg config/p3.cfg
+  cp -r Models/* ../../Models/
 done
-
