@@ -1,0 +1,18 @@
+node_size,model_type,dataset_size,n_features,n_outputs,hidden_layers,activation,solver,test_size,rmse,mape,training_time,converged,n_iterations,model_file,seeding
+10,Q_values,50,55,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.598069160903828,0.25567089380600166,0.1268634796142578,True,4,MLP_model_10.pkl,31
+10,Circuit,50,5,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.553139472971494,0.3974765908427114,0.07423067092895508,True,4,MLP_model_10_Circuit.pkl,31
+12,Q_values,50,78,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.7156757836140903,0.5775799402127249,0.1290130615234375,True,4,MLP_model_12.pkl,31
+12,Circuit,50,5,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.8631241771938791,0.539758095459383,0.03912353515625,True,4,MLP_model_12_Circuit.pkl,31
+15,Q_values,50,120,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.7041709062739915,0.30236654382159067,0.07267427444458008,True,4,MLP_model_15.pkl,31
+15,Circuit,50,5,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.5215235060665155,0.1765698413094222,0.10027766227722168,True,4,MLP_model_15_Circuit.pkl,31
+20,Q_values,50,210,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.6035887356163153,0.22680995974476342,0.10558581352233887,True,4,MLP_model_20.pkl,31
+20,Circuit,50,5,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.6114527780693073,0.2592897166536663,0.10697555541992188,True,4,MLP_model_20_Circuit.pkl,31
+25,Q_values,50,325,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.5413025455361874,0.18005367218101065,0.15891313552856445,True,4,MLP_model_25.pkl,31
+25,Circuit,50,5,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.6757471820801665,0.2188138473202481,0.03590250015258789,True,4,MLP_model_25_Circuit.pkl,31
+full,Q_values,250,325,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.6177646518894659,0.24079635648247505,0.1838235855102539,True,4,MLP_model_full.pkl,31
+full,Circuit,250,5,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.6555326137570092,0.2966271211198898,0.05037260055541992,True,4,MLP_model_full_Circuit.pkl,31
+10,Q_values_full_model,50,325,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.6029554597956721,0.2691199066686196,0.0,True,0,Models/ml_vs_ml/mlp/MLP_model_full.pkl,31
+12,Q_values_full_model,50,325,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.7108575586860086,0.5695294867698438,0.0,True,0,Models/ml_vs_ml/mlp/MLP_model_full.pkl,31
+15,Q_values_full_model,50,325,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.6862731194271671,0.29150537779625363,0.0,True,0,Models/ml_vs_ml/mlp/MLP_model_full.pkl,31
+20,Q_values_full_model,50,325,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.5859450215345636,0.2308774383752165,0.0,True,0,Models/ml_vs_ml/mlp/MLP_model_full.pkl,31
+25,Q_values_full_model,50,325,4,"(128, 64, 32)",logistic,lbfgs,0.2,0.5340272348480563,0.18700123541179603,0.0,True,0,Models/ml_vs_ml/mlp/MLP_model_full.pkl,31

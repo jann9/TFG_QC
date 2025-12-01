@@ -7,7 +7,8 @@ plt.rcParams["font.family"] = "serif"
 
 
 models_list=["MLP","XGBoost","GNN"]
-df = pd.read_csv("Models/ml_vs_ml/statistics_ml_vs_ml.csv")
+version = 1
+df = pd.read_csv(f"Models/ml_vs_ml/V{version}/statistics_ml_vs_ml.csv")
 
 for feature_model in ["QUBO", "Ansatz", "Padding"]:
     if feature_model == "Padding":
@@ -87,5 +88,5 @@ for feature_model in ["QUBO", "Ansatz", "Padding"]:
             plt.text(i+2+0.3,values_2[i]+2,values_2[i])
         """
 
-        plt.savefig(f'Figures/ml_vs_ml/{feature_model}_{metric}.pdf', format="pdf", bbox_inches="tight")
+        plt.savefig(f'Figures/V{version}/ml_vs_ml/{feature_model}_{metric}.pdf', format="pdf", bbox_inches="tight")
         plt.show()

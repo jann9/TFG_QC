@@ -1,0 +1,54 @@
+Model Training Metrics
+========================================
+
+
+ Node size: 10
+   - RMSE = 0.60649, MAPE = 0.43268, TIME =  0.36688
+
+ Node size: 10 Circuit
+   - RMSE = 0.77082, MAPE = 0.40716, TIME =  0.25976
+
+ Node size: 12
+   - RMSE = 0.99523, MAPE = 0.66055, TIME =  0.38228
+
+ Node size: 12 Circuit
+   - RMSE = 1.11482, MAPE = 0.66411, TIME =  0.27027
+
+ Node size: 15
+   - RMSE = 0.60336, MAPE = 0.18878, TIME =  0.47345
+
+ Node size: 15 Circuit
+   - RMSE = 0.80318, MAPE = 0.23517, TIME =  0.26538
+
+ Node size: 20
+   - RMSE = 0.62837, MAPE = 0.27035, TIME =  0.66659
+
+ Node size: 20 Circuit
+   - RMSE = 0.84499, MAPE = 0.32891, TIME =  0.26426
+
+ Node size: 25
+   - RMSE = 0.75604, MAPE = 0.23293, TIME =  0.75827
+
+ Node size: 25 Circuit
+   - RMSE = 0.69545, MAPE = 0.18443, TIME =  0.25951
+
+ Node size: full
+   - RMSE = 0.70160, MAPE = 0.30144, TIME =  3.08579
+
+ Node size: full Circuit
+   - RMSE = 0.75019, MAPE = 0.30040, TIME =  0.31922
+
+Full Q-values model tested on 10 nodes subset:
+   - RMSE = 0.21705, MAPE = 0.02350
+
+Full Q-values model tested on 12 nodes subset:
+   - RMSE = 0.32818, MAPE = 0.27922
+
+Full Q-values model tested on 15 nodes subset:
+   - RMSE = 0.12244, MAPE = 0.01345
+
+Full Q-values model tested on 20 nodes subset:
+   - RMSE = 0.36109, MAPE = 0.08344
+
+Full Q-values model tested on 25 nodes subset:
+   - RMSE = 0.19191, MAPE = 0.02621

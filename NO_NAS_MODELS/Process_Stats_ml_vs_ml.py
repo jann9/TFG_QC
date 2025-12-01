@@ -5,7 +5,7 @@ import statistics
 import numpy as np
 from scipy import stats
 
-def process_stats():
+def process_stats(version):
     data_feature = []
     data_node_size = []
     data_model = []
@@ -29,11 +29,11 @@ def process_stats():
                     if not (((ml_tech == "MLP") or (ml_tech == "xgboost")) & (feature_model == "Q_values_full_model") & (node_size == "full")):
                         for exe in range(1, 31):
                             if ml_tech == "gnn":
-                                df = pd.read_csv("Models/ml_vs_ml/gnn/Execution_" + str(exe) + "/Models/Graph_Neural_Training_metrics.csv")
+                                df = pd.read_csv(f"Models/ml_vs_ml/V{version}/execution_" + str(exe) + "/Models/ml_vs_ml/gnn/Graph_Neural_Training_metrics.csv")
                             elif ml_tech == "MLP":
-                                df = pd.read_csv("Models/ml_vs_ml/MLP/Execution_" + str(exe) + "/Models/MLP_Training_metrics.csv")
+                                df = pd.read_csv(f"Models/ml_vs_ml/V{version}/execution_" + str(exe) + "/Models/ml_vs_ml/mlp/MLP_Training_metrics.csv")
                             elif ml_tech == "xgboost":
-                                df = pd.read_csv("Models/ml_vs_ml/xgboost/Execution_" + str(exe) + "/Models/XGB_Training_metrics.csv")
+                                df = pd.read_csv(f"Models/ml_vs_ml/V{version}/execution_" + str(exe) + "/Models/ml_vs_ml/xgboost/XGB_Training_metrics.csv")
                             for row in df.itertuples():
                                 if row.node_size!='full':
                                     if (int(row.node_size)==node_size) & (row.model_type==feature_model):
@@ -69,6 +69,7 @@ def process_stats():
 
 
 if __name__ == "__main__":
-  results = process_stats()
+  version = 1
+  results = process_stats(version)
   results_formatted = pd.DataFrame(results)
-  results_formatted.to_csv('Models/ml_vs_ml/statistics_ml_vs_ml.csv')
+  results_formatted.to_csv(f'Models/ml_vs_ml/V{version}/statistics_ml_vs_ml.csv')

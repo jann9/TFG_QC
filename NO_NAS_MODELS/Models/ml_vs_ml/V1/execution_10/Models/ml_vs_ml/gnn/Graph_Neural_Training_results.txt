@@ -1,0 +1,21 @@
+Model Training Metrics
+========================================
+
+
+ Node size: 10
+   - RMSE = 0.61537, MAPE = 0.22149, TIME =  12.15152
+
+ Node size: 12
+   - RMSE = 0.62974, MAPE = 0.20041, TIME =  12.02984
+
+ Node size: 15
+   - RMSE = 0.89692, MAPE = 0.19926, TIME =  12.21025
+
+ Node size: 20
+   - RMSE = 1.02914, MAPE = 0.26796, TIME =  12.65515
+
+ Node size: 25
+   - RMSE = 1.43270, MAPE = 0.21072, TIME =  12.81053
+
+ Node size: full
+   - RMSE = 0.66922, MAPE = 216638334959616.00000, TIME =  62.93267
