@@ -1,0 +1,1446 @@
+
+ Training on dataset_10_nodes.csv...
+ Root Mean Squared Error: 0.59573
+ Mean Absolute Percentage Error: 0.25345
+ Training time:  0.06429
+ Model saved as Models/ml_vs_ml/mlp/MLP_model_10.pkl
+
+ Training on dataset_10_nodes_Circuit.csv...
+ Root Mean Squared Error: 0.54988
+ Mean Absolute Percentage Error: 0.39022
+ Training time:  0.02747
+ Model saved as Models/ml_vs_ml/mlp/MLP_model_10_Circuit.pkl
+
+ Training on dataset_12_nodes.csv...
+ Root Mean Squared Error: 0.71484
+ Mean Absolute Percentage Error: 0.57767
+ Training time:  0.12666
+ Model saved as Models/ml_vs_ml/mlp/MLP_model_12.pkl
+
+ Training on dataset_12_nodes_Circuit.csv...
+ Root Mean Squared Error: 0.85873
+ Mean Absolute Percentage Error: 0.52986
+ Training time:  0.01456
+ Model saved as Models/ml_vs_ml/mlp/MLP_model_12_Circuit.pkl
+
+ Training on dataset_15_nodes.csv...
+ Root Mean Squared Error: 0.70610
+ Mean Absolute Percentage Error: 0.30416
+ Training time:  0.03117
+ Model saved as Models/ml_vs_ml/mlp/MLP_model_15.pkl
+
+ Training on dataset_15_nodes_Circuit.csv...
+ Root Mean Squared Error: 0.52772
+ Mean Absolute Percentage Error: 0.17295
+ Training time:  0.01330
+ Model saved as Models/ml_vs_ml/mlp/MLP_model_15_Circuit.pkl
+
+ Training on dataset_20_nodes.csv...
+ Root Mean Squared Error: 0.60417
+ Mean Absolute Percentage Error: 0.22716
+ Training time:  0.07923
+ Model saved as Models/ml_vs_ml/mlp/MLP_model_20.pkl
+
+ Training on dataset_20_nodes_Circuit.csv...
+ Root Mean Squared Error: 0.61102
+ Mean Absolute Percentage Error: 0.25384
+ Training time:  0.02287
+ Model saved as Models/ml_vs_ml/mlp/MLP_model_20_Circuit.pkl
+
+ Training on dataset_25_nodes.csv...
+ Root Mean Squared Error: 0.53896
+ Mean Absolute Percentage Error: 0.17835
+ Training time:  0.15940
+ Model saved as Models/ml_vs_ml/mlp/MLP_model_25.pkl
+
+ Training on dataset_25_nodes_Circuit.csv...
+ Root Mean Squared Error: 0.68351
+ Mean Absolute Percentage Error: 0.21614
+ Training time:  0.03475
+ Model saved as Models/ml_vs_ml/mlp/MLP_model_25_Circuit.pkl
+
+ Training on dataset_full.csv...
+ Root Mean Squared Error: 0.61726
+ Mean Absolute Percentage Error: 0.23931
+ Training time:  0.17486
+ Model saved as Models/ml_vs_ml/mlp/MLP_model_full.pkl
+
+ Training on dataset_full_Circuit.csv...
+ Root Mean Squared Error: 0.65869
+ Mean Absolute Percentage Error: 0.29036
+ Training time:  0.02362
+ Model saved as Models/ml_vs_ml/mlp/MLP_model_full_Circuit.pkl
+
+=== Testing Full Models on Individual Node Test Sets ===
+Full Q-values model loaded successfully
+
+Testing full Q-values model on 10 nodes subset...
+  RMSE on 10 nodes subset: 0.60200
+  MAPE on 10 nodes subset: 0.26768
+
+Testing full Q-values model on 12 nodes subset...
+  RMSE on 12 nodes subset: 0.71100
+  MAPE on 12 nodes subset: 0.57028
+
+Testing full Q-values model on 15 nodes subset...
+  RMSE on 15 nodes subset: 0.68605
+  MAPE on 15 nodes subset: 0.29121
+
+Testing full Q-values model on 20 nodes subset...
+  RMSE on 20 nodes subset: 0.58604
+  MAPE on 20 nodes subset: 0.22737
+
+Testing full Q-values model on 25 nodes subset...
+  RMSE on 25 nodes subset: 0.53207
+  MAPE on 25 nodes subset: 0.18579
+
+Metrics saved to Models/ml_vs_ml/mlp/MLP_Training_metrics.csv
+
+ **Final Training and Cross-Testing Results:**
+node_size          model_type  dataset_size  n_features  n_outputs hidden_layers activation solver  test_size     rmse     mape  training_time  converged  n_iterations                             model_file  seeding
+       10            Q_values            50          55          4 (128, 64, 32)   logistic  lbfgs        0.2 0.595729 0.253450       0.064286       True             4                       MLP_model_10.pkl       48
+       10             Circuit            50           5          4 (128, 64, 32)   logistic  lbfgs        0.2 0.549884 0.390223       0.027467       True             3               MLP_model_10_Circuit.pkl       48
+       12            Q_values            50          78          4 (128, 64, 32)   logistic  lbfgs        0.2 0.714837 0.577672       0.126662       True             4                       MLP_model_12.pkl       48
+       12             Circuit            50           5          4 (128, 64, 32)   logistic  lbfgs        0.2 0.858728 0.529856       0.014560       True             3               MLP_model_12_Circuit.pkl       48
+       15            Q_values            50         120          4 (128, 64, 32)   logistic  lbfgs        0.2 0.706100 0.304165       0.031168       True             4                       MLP_model_15.pkl       48
+       15             Circuit            50           5          4 (128, 64, 32)   logistic  lbfgs        0.2 0.527721 0.172945       0.013297       True             3               MLP_model_15_Circuit.pkl       48
+       20            Q_values            50         210          4 (128, 64, 32)   logistic  lbfgs        0.2 0.604172 0.227159       0.079233       True             4                       MLP_model_20.pkl       48
+       20             Circuit            50           5          4 (128, 64, 32)   logistic  lbfgs        0.2 0.611019 0.253841       0.022870       True             3               MLP_model_20_Circuit.pkl       48
+       25            Q_values            50         325          4 (128, 64, 32)   logistic  lbfgs        0.2 0.538957 0.178346       0.159399       True             4                       MLP_model_25.pkl       48
+       25             Circuit            50           5          4 (128, 64, 32)   logistic  lbfgs        0.2 0.683509 0.216138       0.034746       True             3               MLP_model_25_Circuit.pkl       48
+     full            Q_values           250         325          4 (128, 64, 32)   logistic  lbfgs        0.2 0.617255 0.239307       0.174859       True             4                     MLP_model_full.pkl       48
+     full             Circuit           250           5          4 (128, 64, 32)   logistic  lbfgs        0.2 0.658690 0.290365       0.023623       True             3             MLP_model_full_Circuit.pkl       48
+       10 Q_values_full_model            50         325          4 (128, 64, 32)   logistic  lbfgs        0.2 0.601996 0.267678       0.000000       True             0 Models/ml_vs_ml/mlp/MLP_model_full.pkl       48
+       12 Q_values_full_model            50         325          4 (128, 64, 32)   logistic  lbfgs        0.2 0.711002 0.570278       0.000000       True             0 Models/ml_vs_ml/mlp/MLP_model_full.pkl       48
+       15 Q_values_full_model            50         325          4 (128, 64, 32)   logistic  lbfgs        0.2 0.686046 0.291211       0.000000       True             0 Models/ml_vs_ml/mlp/MLP_model_full.pkl       48
+       20 Q_values_full_model            50         325          4 (128, 64, 32)   logistic  lbfgs        0.2 0.586041 0.227371       0.000000       True             0 Models/ml_vs_ml/mlp/MLP_model_full.pkl       48
+       25 Q_values_full_model            50         325          4 (128, 64, 32)   logistic  lbfgs        0.2 0.532066 0.185790       0.000000       True             0 Models/ml_vs_ml/mlp/MLP_model_full.pkl       48
+
+ Training and cross-testing complete for all datasets!
+
+ Training on dataset_10_nodes.csv...
+ Root Mean Squared Error: 0.59020
+ Mean Absolute Percentage Error: 0.40378
+ Training time:  0.66785
+ Model saved as Models/ml_vs_ml/xgboost/xgboost_model_10.pkl
+
+ Training on dataset_10_nodes_Circuit.csv...
+ Root Mean Squared Error: 0.77388
+ Mean Absolute Percentage Error: 0.39701
+ Training time:  0.49522
+ Model saved as Models/ml_vs_ml/xgboost/xgboost_model_10_Circuit.pkl
+
+ Training on dataset_12_nodes.csv...
+ Root Mean Squared Error: 0.97392
+ Mean Absolute Percentage Error: 0.65010
+ Training time:  0.62432
+ Model saved as Models/ml_vs_ml/xgboost/xgboost_model_12.pkl
+
+ Training on dataset_12_nodes_Circuit.csv...
+ Root Mean Squared Error: 1.10074
+ Mean Absolute Percentage Error: 0.66123
+ Training time:  0.49063
+ Model saved as Models/ml_vs_ml/xgboost/xgboost_model_12_Circuit.pkl
+
+ Training on dataset_15_nodes.csv...
+ Root Mean Squared Error: 0.61333
+ Mean Absolute Percentage Error: 0.19251
+ Training time:  0.72117
+ Model saved as Models/ml_vs_ml/xgboost/xgboost_model_15.pkl
+
+ Training on dataset_15_nodes_Circuit.csv...
+ Root Mean Squared Error: 0.80631
+ Mean Absolute Percentage Error: 0.23329
+ Training time:  0.49925
+ Model saved as Models/ml_vs_ml/xgboost/xgboost_model_15_Circuit.pkl
+
+ Training on dataset_20_nodes.csv...
+ Root Mean Squared Error: 0.64726
+ Mean Absolute Percentage Error: 0.27837
+ Training time:  0.97886
+ Model saved as Models/ml_vs_ml/xgboost/xgboost_model_20.pkl
+
+ Training on dataset_20_nodes_Circuit.csv...
+ Root Mean Squared Error: 0.84753
+ Mean Absolute Percentage Error: 0.32961
+ Training time:  0.51376
+ Model saved as Models/ml_vs_ml/xgboost/xgboost_model_20_Circuit.pkl
+
+ Training on dataset_25_nodes.csv...
+ Root Mean Squared Error: 0.75919
+ Mean Absolute Percentage Error: 0.23239
+ Training time:  1.09419
+ Model saved as Models/ml_vs_ml/xgboost/xgboost_model_25.pkl
+
+ Training on dataset_25_nodes_Circuit.csv...
+ Root Mean Squared Error: 0.70518
+ Mean Absolute Percentage Error: 0.18744
+ Training time:  0.50363
+ Model saved as Models/ml_vs_ml/xgboost/xgboost_model_25_Circuit.pkl
+
+ Training on dataset_full.csv...
+ Root Mean Squared Error: 0.72474
+ Mean Absolute Percentage Error: 0.30913
+ Training time:  4.22962
+ Model saved as Models/ml_vs_ml/xgboost/xgboost_model_full.pkl
+
+ Training on dataset_full_Circuit.csv...
+ Root Mean Squared Error: 0.75516
+ Mean Absolute Percentage Error: 0.30069
+ Training time:  0.57141
+ Model saved as Models/ml_vs_ml/xgboost/xgboost_model_full_Circuit.pkl
+
+=== Testing Full Models on Individual Node Test Sets ===
+Full Q-values model loaded successfully
+
+Testing full Q-values model on 10 nodes subset...
+  RMSE on 10 nodes subset: 0.23304
+  MAPE on 10 nodes subset: 0.02504
+
+Testing full Q-values model on 12 nodes subset...
+  RMSE on 12 nodes subset: 0.35067
+  MAPE on 12 nodes subset: 0.27527
+
+Testing full Q-values model on 15 nodes subset...
+  RMSE on 15 nodes subset: 0.15664
+  MAPE on 15 nodes subset: 0.01774
+
+Testing full Q-values model on 20 nodes subset...
+  RMSE on 20 nodes subset: 0.41828
+  MAPE on 20 nodes subset: 0.09516
+
+Testing full Q-values model on 25 nodes subset...
+  RMSE on 25 nodes subset: 0.16353
+  MAPE on 25 nodes subset: 0.02252
+
+Metrics saved to Models/ml_vs_ml/xgboost/XGB_Training_metrics.csv
+
+ **Final Training Results:**
+
+ **Final Training Results:**
+node_size          model_type  dataset_size  n_features  n_outputs     rmse     mape  training_time                                     model_file  seeding
+       10            Q_values            50          55          4 0.590197 0.403780       0.667846                           xgboost_model_10.pkl        1
+       10             Circuit            50           5          4 0.773883 0.397009       0.495218                   xgboost_model_10_Circuit.pkl        1
+       12            Q_values            50          78          4 0.973920 0.650100       0.624317                           xgboost_model_12.pkl        1
+       12             Circuit            50           5          4 1.100738 0.661230       0.490632                   xgboost_model_12_Circuit.pkl        1
+       15            Q_values            50         120          4 0.613331 0.192512       0.721169                           xgboost_model_15.pkl        1
+       15             Circuit            50           5          4 0.806306 0.233293       0.499252                   xgboost_model_15_Circuit.pkl        1
+       20            Q_values            50         210          4 0.647256 0.278369       0.978861                           xgboost_model_20.pkl        1
+       20             Circuit            50           5          4 0.847533 0.329610       0.513764                   xgboost_model_20_Circuit.pkl        1
+       25            Q_values            50         325          4 0.759187 0.232391       1.094187                           xgboost_model_25.pkl        1
+       25             Circuit            50           5          4 0.705184 0.187440       0.503634                   xgboost_model_25_Circuit.pkl        1
+     full            Q_values           250         325          4 0.724743 0.309135       4.229623                         xgboost_model_full.pkl        1
+     full             Circuit           250           5          4 0.755158 0.300693       0.571415                 xgboost_model_full_Circuit.pkl        1
+       10 Q_values_full_model            50         325          4 0.233036 0.025037       0.000000 Models/ml_vs_ml/xgboost/xgboost_model_full.pkl        1
+       12 Q_values_full_model            50         325          4 0.350673 0.275266       0.000000 Models/ml_vs_ml/xgboost/xgboost_model_full.pkl        1
+       15 Q_values_full_model            50         325          4 0.156636 0.017736       0.000000 Models/ml_vs_ml/xgboost/xgboost_model_full.pkl        1
+       20 Q_values_full_model            50         325          4 0.418275 0.095156       0.000000 Models/ml_vs_ml/xgboost/xgboost_model_full.pkl        1
+       25 Q_values_full_model            50         325          4 0.163533 0.022519       0.000000 Models/ml_vs_ml/xgboost/xgboost_model_full.pkl        1
+
+ Training complete for all datasets!
+
+ Training on dataset_10_nodes.csv...
+Total rows in CSV: 50
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+10 55
+Loaded 50 valid graphs.
+Epoch 001, Loss: 2.8915
+Epoch 002, Loss: 0.6696
+Epoch 003, Loss: 0.5636
+Epoch 004, Loss: 0.5655
+Epoch 005, Loss: 0.5908
+Epoch 006, Loss: 0.5826
+Epoch 007, Loss: 0.6178
+Epoch 008, Loss: 0.5956
+Epoch 009, Loss: 0.6108
+Epoch 010, Loss: 0.5804
+Epoch 011, Loss: 0.5755
+Epoch 012, Loss: 0.6156
+Epoch 013, Loss: 0.6255
+Epoch 014, Loss: 0.5543
+Epoch 015, Loss: 0.5897
+Epoch 016, Loss: 0.5907
+Epoch 017, Loss: 0.5663
+Epoch 018, Loss: 0.5759
+Epoch 019, Loss: 0.6000
+Epoch 020, Loss: 0.5765
+Epoch 021, Loss: 0.5689
+Epoch 022, Loss: 0.5375
+Epoch 023, Loss: 0.5512
+Epoch 024, Loss: 0.6355
+Epoch 025, Loss: 0.5350
+Epoch 026, Loss: 0.5264
+Epoch 027, Loss: 0.5653
+Epoch 028, Loss: 0.5881
+Epoch 029, Loss: 0.5278
+Epoch 030, Loss: 0.5124
+Epoch 031, Loss: 0.5904
+Epoch 032, Loss: 0.5281
+Epoch 033, Loss: 0.5562
+Epoch 034, Loss: 0.5280
+Epoch 035, Loss: 0.5352
+Epoch 036, Loss: 0.5400
+Epoch 037, Loss: 0.5127
+Epoch 038, Loss: 0.5172
+Epoch 039, Loss: 0.5181
+Epoch 040, Loss: 0.5667
+Epoch 041, Loss: 0.5142
+Epoch 042, Loss: 0.5191
+Epoch 043, Loss: 0.5287
+Epoch 044, Loss: 0.4951
+Epoch 045, Loss: 0.5016
+Epoch 046, Loss: 0.5353
+Epoch 047, Loss: 0.5547
+Epoch 048, Loss: 0.5513
+Epoch 049, Loss: 0.5028
+Epoch 050, Loss: 0.5392
+Epoch 051, Loss: 0.5403
+Epoch 052, Loss: 0.5098
+Epoch 053, Loss: 0.5307
+Epoch 054, Loss: 0.5061
+Epoch 055, Loss: 0.4733
+Epoch 056, Loss: 0.4913
+Epoch 057, Loss: 0.5018
+Epoch 058, Loss: 0.4968
+Epoch 059, Loss: 0.5329
+Epoch 060, Loss: 0.5529
+Epoch 061, Loss: 0.5438
+Epoch 062, Loss: 0.5084
+Epoch 063, Loss: 0.4794
+Epoch 064, Loss: 0.4861
+Epoch 065, Loss: 0.4953
+Epoch 066, Loss: 0.4738
+Epoch 067, Loss: 0.5017
+Epoch 068, Loss: 0.4822
+Epoch 069, Loss: 0.4784
+Epoch 070, Loss: 0.4958
+Epoch 071, Loss: 0.4898
+Epoch 072, Loss: 0.4709
+Epoch 073, Loss: 0.4950
+Epoch 074, Loss: 0.4833
+Epoch 075, Loss: 0.4760
+Epoch 076, Loss: 0.4754
+Epoch 077, Loss: 0.4785
+Epoch 078, Loss: 0.4882
+Epoch 079, Loss: 0.4630
+Epoch 080, Loss: 0.4677
+Epoch 081, Loss: 0.5025
+Epoch 082, Loss: 0.4455
+Epoch 083, Loss: 0.4587
+Epoch 084, Loss: 0.4326
+Epoch 085, Loss: 0.4651
+Epoch 086, Loss: 0.4667
+Epoch 087, Loss: 0.4441
+Epoch 088, Loss: 0.4557
+Epoch 089, Loss: 0.4434
+Epoch 090, Loss: 0.4325
+Epoch 091, Loss: 0.4441
+Epoch 092, Loss: 0.4516
+Epoch 093, Loss: 0.4174
+Epoch 094, Loss: 0.4543
+Epoch 095, Loss: 0.4460
+Epoch 096, Loss: 0.4249
+Epoch 097, Loss: 0.4398
+Epoch 098, Loss: 0.4321
+Epoch 099, Loss: 0.4644
+Epoch 100, Loss: 0.4251
+
+Test RMSE: 0.6178
+Test MAPE: 0.2175
+Training time: 14.94 seconds
+Model saved to Models/ml_vs_ml/gnn/GCN_model_10.pkl
+
+ Training on dataset_12_nodes.csv...
+Total rows in CSV: 50
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+12 78
+Loaded 50 valid graphs.
+Epoch 001, Loss: 3.7010
+Epoch 002, Loss: 0.9472
+Epoch 003, Loss: 0.8747
+Epoch 004, Loss: 0.8301
+Epoch 005, Loss: 0.9102
+Epoch 006, Loss: 0.8707
+Epoch 007, Loss: 0.8723
+Epoch 008, Loss: 0.8069
+Epoch 009, Loss: 0.9218
+Epoch 010, Loss: 0.8660
+Epoch 011, Loss: 0.9039
+Epoch 012, Loss: 0.8245
+Epoch 013, Loss: 0.8522
+Epoch 014, Loss: 0.8143
+Epoch 015, Loss: 0.8230
+Epoch 016, Loss: 0.8472
+Epoch 017, Loss: 0.8420
+Epoch 018, Loss: 0.8275
+Epoch 019, Loss: 0.8726
+Epoch 020, Loss: 0.8997
+Epoch 021, Loss: 0.7997
+Epoch 022, Loss: 0.8374
+Epoch 023, Loss: 0.8304
+Epoch 024, Loss: 0.8748
+Epoch 025, Loss: 0.8430
+Epoch 026, Loss: 0.9618
+Epoch 027, Loss: 0.8798
+Epoch 028, Loss: 0.8369
+Epoch 029, Loss: 0.8089
+Epoch 030, Loss: 0.7978
+Epoch 031, Loss: 0.8120
+Epoch 032, Loss: 0.7994
+Epoch 033, Loss: 0.8046
+Epoch 034, Loss: 0.8145
+Epoch 035, Loss: 0.7950
+Epoch 036, Loss: 0.8174
+Epoch 037, Loss: 0.8501
+Epoch 038, Loss: 0.8396
+Epoch 039, Loss: 0.7574
+Epoch 040, Loss: 0.7466
+Epoch 041, Loss: 0.7286
+Epoch 042, Loss: 0.7585
+Epoch 043, Loss: 0.7695
+Epoch 044, Loss: 0.7578
+Epoch 045, Loss: 0.7056
+Epoch 046, Loss: 0.6962
+Epoch 047, Loss: 0.7277
+Epoch 048, Loss: 0.7275
+Epoch 049, Loss: 0.7063
+Epoch 050, Loss: 0.7016
+Epoch 051, Loss: 0.7441
+Epoch 052, Loss: 0.7481
+Epoch 053, Loss: 0.6756
+Epoch 054, Loss: 0.6686
+Epoch 055, Loss: 0.6886
+Epoch 056, Loss: 0.7151
+Epoch 057, Loss: 0.6491
+Epoch 058, Loss: 0.6630
+Epoch 059, Loss: 0.6568
+Epoch 060, Loss: 0.6134
+Epoch 061, Loss: 0.6300
+Epoch 062, Loss: 0.6125
+Epoch 063, Loss: 0.6145
+Epoch 064, Loss: 0.7123
+Epoch 065, Loss: 0.6427
+Epoch 066, Loss: 0.5906
+Epoch 067, Loss: 0.6163
+Epoch 068, Loss: 0.6803
+Epoch 069, Loss: 0.6336
+Epoch 070, Loss: 0.5819
+Epoch 071, Loss: 0.5900
+Epoch 072, Loss: 0.5952
+Epoch 073, Loss: 0.6127
+Epoch 074, Loss: 0.5922
+Epoch 075, Loss: 0.5902
+Epoch 076, Loss: 0.5668
+Epoch 077, Loss: 0.5775
+Epoch 078, Loss: 0.5880
+Epoch 079, Loss: 0.5717
+Epoch 080, Loss: 0.5789
+Epoch 081, Loss: 0.5586
+Epoch 082, Loss: 0.5735
+Epoch 083, Loss: 0.5621
+Epoch 084, Loss: 0.5653
+Epoch 085, Loss: 0.5770
+Epoch 086, Loss: 0.5904
+Epoch 087, Loss: 0.5661
+Epoch 088, Loss: 0.5712
+Epoch 089, Loss: 0.5800
+Epoch 090, Loss: 0.5475
+Epoch 091, Loss: 0.5558
+Epoch 092, Loss: 0.5314
+Epoch 093, Loss: 0.5455
+Epoch 094, Loss: 0.5674
+Epoch 095, Loss: 0.5517
+Epoch 096, Loss: 0.5277
+Epoch 097, Loss: 0.5479
+Epoch 098, Loss: 0.5536
+Epoch 099, Loss: 0.5316
+Epoch 100, Loss: 0.5415
+
+Test RMSE: 0.7213
+Test MAPE: 0.1999
+Training time: 14.07 seconds
+Model saved to Models/ml_vs_ml/gnn/GCN_model_12.pkl
+
+ Training on dataset_15_nodes.csv...
+Total rows in CSV: 50
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+15 120
+Loaded 50 valid graphs.
+Epoch 001, Loss: 4.9603
+Epoch 002, Loss: 0.9473
+Epoch 003, Loss: 0.9143
+Epoch 004, Loss: 0.9632
+Epoch 005, Loss: 0.9242
+Epoch 006, Loss: 0.9207
+Epoch 007, Loss: 0.9482
+Epoch 008, Loss: 1.1065
+Epoch 009, Loss: 0.9579
+Epoch 010, Loss: 0.9855
+Epoch 011, Loss: 0.9748
+Epoch 012, Loss: 0.9979
+Epoch 013, Loss: 0.9069
+Epoch 014, Loss: 0.9142
+Epoch 015, Loss: 0.9024
+Epoch 016, Loss: 1.1120
+Epoch 017, Loss: 0.9251
+Epoch 018, Loss: 0.9414
+Epoch 019, Loss: 0.8769
+Epoch 020, Loss: 0.9568
+Epoch 021, Loss: 0.9372
+Epoch 022, Loss: 0.9096
+Epoch 023, Loss: 0.8673
+Epoch 024, Loss: 0.9101
+Epoch 025, Loss: 0.9096
+Epoch 026, Loss: 0.9058
+Epoch 027, Loss: 0.9351
+Epoch 028, Loss: 0.9900
+Epoch 029, Loss: 0.9477
+Epoch 030, Loss: 0.8772
+Epoch 031, Loss: 0.8980
+Epoch 032, Loss: 0.8718
+Epoch 033, Loss: 0.8254
+Epoch 034, Loss: 0.9594
+Epoch 035, Loss: 0.9000
+Epoch 036, Loss: 0.8103
+Epoch 037, Loss: 0.7970
+Epoch 038, Loss: 0.7958
+Epoch 039, Loss: 0.8203
+Epoch 040, Loss: 0.7752
+Epoch 041, Loss: 0.7304
+Epoch 042, Loss: 0.7413
+Epoch 043, Loss: 0.7861
+Epoch 044, Loss: 0.7702
+Epoch 045, Loss: 0.7017
+Epoch 046, Loss: 0.6924
+Epoch 047, Loss: 0.7559
+Epoch 048, Loss: 0.6839
+Epoch 049, Loss: 0.7151
+Epoch 050, Loss: 0.6586
+Epoch 051, Loss: 0.7329
+Epoch 052, Loss: 0.6672
+Epoch 053, Loss: 0.6668
+Epoch 054, Loss: 0.6905
+Epoch 055, Loss: 0.6909
+Epoch 056, Loss: 0.6484
+Epoch 057, Loss: 0.6582
+Epoch 058, Loss: 0.6192
+Epoch 059, Loss: 0.5958
+Epoch 060, Loss: 0.6295
+Epoch 061, Loss: 0.6112
+Epoch 062, Loss: 0.5891
+Epoch 063, Loss: 0.6631
+Epoch 064, Loss: 0.6806
+Epoch 065, Loss: 0.6352
+Epoch 066, Loss: 0.5703
+Epoch 067, Loss: 0.5618
+Epoch 068, Loss: 0.5662
+Epoch 069, Loss: 0.5842
+Epoch 070, Loss: 0.5534
+Epoch 071, Loss: 0.5822
+Epoch 072, Loss: 0.6280
+Epoch 073, Loss: 0.5302
+Epoch 074, Loss: 0.5388
+Epoch 075, Loss: 0.5224
+Epoch 076, Loss: 0.5144
+Epoch 077, Loss: 0.5193
+Epoch 078, Loss: 0.5062
+Epoch 079, Loss: 0.5477
+Epoch 080, Loss: 0.5492
+Epoch 081, Loss: 0.5224
+Epoch 082, Loss: 0.5173
+Epoch 083, Loss: 0.5584
+Epoch 084, Loss: 0.5902
+Epoch 085, Loss: 0.5194
+Epoch 086, Loss: 0.4917
+Epoch 087, Loss: 0.5696
+Epoch 088, Loss: 0.5185
+Epoch 089, Loss: 0.4939
+Epoch 090, Loss: 0.5208
+Epoch 091, Loss: 0.4973
+Epoch 092, Loss: 0.4632
+Epoch 093, Loss: 0.5116
+Epoch 094, Loss: 0.4871
+Epoch 095, Loss: 0.5014
+Epoch 096, Loss: 0.5115
+Epoch 097, Loss: 0.4864
+Epoch 098, Loss: 0.4718
+Epoch 099, Loss: 0.4646
+Epoch 100, Loss: 0.4737
+
+Test RMSE: 0.7623
+Test MAPE: 0.2240
+Training time: 13.25 seconds
+Model saved to Models/ml_vs_ml/gnn/GCN_model_15.pkl
+
+ Training on dataset_20_nodes.csv...
+Total rows in CSV: 50
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+20 210
+Loaded 50 valid graphs.
+Epoch 001, Loss: 8.3499
+Epoch 002, Loss: 1.3280
+Epoch 003, Loss: 1.2356
+Epoch 004, Loss: 1.3019
+Epoch 005, Loss: 1.2790
+Epoch 006, Loss: 1.1653
+Epoch 007, Loss: 1.2379
+Epoch 008, Loss: 1.2311
+Epoch 009, Loss: 1.4485
+Epoch 010, Loss: 1.2677
+Epoch 011, Loss: 1.2926
+Epoch 012, Loss: 1.2947
+Epoch 013, Loss: 1.1989
+Epoch 014, Loss: 1.5484
+Epoch 015, Loss: 1.1917
+Epoch 016, Loss: 1.2075
+Epoch 017, Loss: 1.1650
+Epoch 018, Loss: 1.2315
+Epoch 019, Loss: 1.4454
+Epoch 020, Loss: 1.2449
+Epoch 021, Loss: 1.3570
+Epoch 022, Loss: 1.1641
+Epoch 023, Loss: 1.1912
+Epoch 024, Loss: 1.3010
+Epoch 025, Loss: 1.2823
+Epoch 026, Loss: 1.1778
+Epoch 027, Loss: 1.3072
+Epoch 028, Loss: 1.3261
+Epoch 029, Loss: 1.1513
+Epoch 030, Loss: 1.1943
+Epoch 031, Loss: 1.3674
+Epoch 032, Loss: 1.2995
+Epoch 033, Loss: 1.1574
+Epoch 034, Loss: 1.1820
+Epoch 035, Loss: 1.2742
+Epoch 036, Loss: 1.2805
+Epoch 037, Loss: 1.1646
+Epoch 038, Loss: 1.2039
+Epoch 039, Loss: 1.2571
+Epoch 040, Loss: 1.1845
+Epoch 041, Loss: 1.3701
+Epoch 042, Loss: 1.3526
+Epoch 043, Loss: 1.1830
+Epoch 044, Loss: 1.3185
+Epoch 045, Loss: 1.2029
+Epoch 046, Loss: 1.3142
+Epoch 047, Loss: 1.1550
+Epoch 048, Loss: 1.1499
+Epoch 049, Loss: 1.2308
+Epoch 050, Loss: 1.1414
+Epoch 051, Loss: 1.2011
+Epoch 052, Loss: 1.1326
+Epoch 053, Loss: 1.2674
+Epoch 054, Loss: 1.1487
+Epoch 055, Loss: 1.1187
+Epoch 056, Loss: 1.1880
+Epoch 057, Loss: 1.2244
+Epoch 058, Loss: 1.2246
+Epoch 059, Loss: 1.1456
+Epoch 060, Loss: 1.2190
+Epoch 061, Loss: 1.1821
+Epoch 062, Loss: 1.1686
+Epoch 063, Loss: 1.1225
+Epoch 064, Loss: 1.1831
+Epoch 065, Loss: 1.0912
+Epoch 066, Loss: 1.0834
+Epoch 067, Loss: 0.9737
+Epoch 068, Loss: 1.1921
+Epoch 069, Loss: 1.0798
+Epoch 070, Loss: 1.2000
+Epoch 071, Loss: 1.1239
+Epoch 072, Loss: 0.9690
+Epoch 073, Loss: 1.0580
+Epoch 074, Loss: 1.1230
+Epoch 075, Loss: 0.9306
+Epoch 076, Loss: 0.9520
+Epoch 077, Loss: 0.9341
+Epoch 078, Loss: 0.9125
+Epoch 079, Loss: 0.8700
+Epoch 080, Loss: 0.8802
+Epoch 081, Loss: 0.8688
+Epoch 082, Loss: 0.8565
+Epoch 083, Loss: 0.8969
+Epoch 084, Loss: 0.8209
+Epoch 085, Loss: 0.8265
+Epoch 086, Loss: 0.8646
+Epoch 087, Loss: 0.8549
+Epoch 088, Loss: 0.8143
+Epoch 089, Loss: 0.7745
+Epoch 090, Loss: 0.8040
+Epoch 091, Loss: 0.8258
+Epoch 092, Loss: 0.9372
+Epoch 093, Loss: 0.9409
+Epoch 094, Loss: 0.8622
+Epoch 095, Loss: 0.8297
+Epoch 096, Loss: 0.7980
+Epoch 097, Loss: 0.8716
+Epoch 098, Loss: 0.8903
+Epoch 099, Loss: 0.7522
+Epoch 100, Loss: 0.7375
+
+Test RMSE: 0.8517
+Test MAPE: 0.2623
+Training time: 15.98 seconds
+Model saved to Models/ml_vs_ml/gnn/GCN_model_20.pkl
+
+ Training on dataset_25_nodes.csv...
+Total rows in CSV: 50
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+Loaded 50 valid graphs.
+Epoch 001, Loss: 12.1033
+Epoch 002, Loss: 1.7759
+Epoch 003, Loss: 1.5504
+Epoch 004, Loss: 1.7341
+Epoch 005, Loss: 1.6340
+Epoch 006, Loss: 1.6431
+Epoch 007, Loss: 1.6621
+Epoch 008, Loss: 1.7852
+Epoch 009, Loss: 1.7738
+Epoch 010, Loss: 1.6790
+Epoch 011, Loss: 1.6132
+Epoch 012, Loss: 1.5652
+Epoch 013, Loss: 1.5288
+Epoch 014, Loss: 1.7281
+Epoch 015, Loss: 1.7890
+Epoch 016, Loss: 1.4664
+Epoch 017, Loss: 1.5655
+Epoch 018, Loss: 1.5144
+Epoch 019, Loss: 1.5298
+Epoch 020, Loss: 1.5464
+Epoch 021, Loss: 1.5312
+Epoch 022, Loss: 1.4574
+Epoch 023, Loss: 1.6838
+Epoch 024, Loss: 1.5545
+Epoch 025, Loss: 1.6305
+Epoch 026, Loss: 1.3955
+Epoch 027, Loss: 1.9795
+Epoch 028, Loss: 1.5988
+Epoch 029, Loss: 1.4959
+Epoch 030, Loss: 1.4245
+Epoch 031, Loss: 1.5877
+Epoch 032, Loss: 1.5649
+Epoch 033, Loss: 1.7066
+Epoch 034, Loss: 1.4674
+Epoch 035, Loss: 1.5418
+Epoch 036, Loss: 1.5102
+Epoch 037, Loss: 1.9807
+Epoch 038, Loss: 1.5482
+Epoch 039, Loss: 1.5375
+Epoch 040, Loss: 1.5801
+Epoch 041, Loss: 1.5935
+Epoch 042, Loss: 1.3862
+Epoch 043, Loss: 1.7976
+Epoch 044, Loss: 1.6487
+Epoch 045, Loss: 1.5067
+Epoch 046, Loss: 1.5138
+Epoch 047, Loss: 1.5738
+Epoch 048, Loss: 1.5051
+Epoch 049, Loss: 1.5546
+Epoch 050, Loss: 1.5829
+Epoch 051, Loss: 1.6627
+Epoch 052, Loss: 1.4819
+Epoch 053, Loss: 1.4895
+Epoch 054, Loss: 1.4573
+Epoch 055, Loss: 1.3722
+Epoch 056, Loss: 1.3612
+Epoch 057, Loss: 1.5503
+Epoch 058, Loss: 1.4819
+Epoch 059, Loss: 1.3726
+Epoch 060, Loss: 1.3497
+Epoch 061, Loss: 1.3825
+Epoch 062, Loss: 1.3811
+Epoch 063, Loss: 1.2363
+Epoch 064, Loss: 1.0914
+Epoch 065, Loss: 1.2016
+Epoch 066, Loss: 1.0445
+Epoch 067, Loss: 1.1384
+Epoch 068, Loss: 1.0413
+Epoch 069, Loss: 1.1222
+Epoch 070, Loss: 0.9517
+Epoch 071, Loss: 0.9097
+Epoch 072, Loss: 1.1602
+Epoch 073, Loss: 1.2171
+Epoch 074, Loss: 1.0907
+Epoch 075, Loss: 0.9990
+Epoch 076, Loss: 0.9102
+Epoch 077, Loss: 0.9929
+Epoch 078, Loss: 0.9423
+Epoch 079, Loss: 1.0104
+Epoch 080, Loss: 0.8536
+Epoch 081, Loss: 0.9066
+Epoch 082, Loss: 0.7834
+Epoch 083, Loss: 0.8921
+Epoch 084, Loss: 0.9062
+Epoch 085, Loss: 0.8856
+Epoch 086, Loss: 0.9295
+Epoch 087, Loss: 0.9381
+Epoch 088, Loss: 0.8907
+Epoch 089, Loss: 0.8405
+Epoch 090, Loss: 0.7726
+Epoch 091, Loss: 1.0244
+Epoch 092, Loss: 0.9004
+Epoch 093, Loss: 0.8640
+Epoch 094, Loss: 0.7532
+Epoch 095, Loss: 0.7995
+Epoch 096, Loss: 0.8288
+Epoch 097, Loss: 0.9833
+Epoch 098, Loss: 0.8820
+Epoch 099, Loss: 0.7775
+Epoch 100, Loss: 0.8031
+
+Test RMSE: 1.4462
+Test MAPE: 0.2420
+Training time: 16.24 seconds
+Model saved to Models/ml_vs_ml/gnn/GCN_model_25.pkl
+
+ Training on dataset_full.csv...
+Total rows in CSV: 250
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+25 325
+Loaded 250 valid graphs.
+Epoch 001, Loss: 3.7225
+Epoch 002, Loss: 3.4014
+Epoch 003, Loss: 3.3167
+Epoch 004, Loss: 3.1583
+Epoch 005, Loss: 3.0177
+Epoch 006, Loss: 2.1601
+Epoch 007, Loss: 1.2116
+Epoch 008, Loss: 0.8866
+Epoch 009, Loss: 0.7206
+Epoch 010, Loss: 0.7286
+Epoch 011, Loss: 0.6527
+Epoch 012, Loss: 0.7170
+Epoch 013, Loss: 0.6241
+Epoch 014, Loss: 0.7126
+Epoch 015, Loss: 0.6801
+Epoch 016, Loss: 0.6567
+Epoch 017, Loss: 0.6675
+Epoch 018, Loss: 0.6833
+Epoch 019, Loss: 0.7381
+Epoch 020, Loss: 0.6161
+Epoch 021, Loss: 0.5419
+Epoch 022, Loss: 0.6222
+Epoch 023, Loss: 0.6133
+Epoch 024, Loss: 0.6684
+Epoch 025, Loss: 0.6659
+Epoch 026, Loss: 0.5874
+Epoch 027, Loss: 0.7121
+Epoch 028, Loss: 0.5823
+Epoch 029, Loss: 0.6820
+Epoch 030, Loss: 0.5513
+Epoch 031, Loss: 0.6067
+Epoch 032, Loss: 0.5560
+Epoch 033, Loss: 0.6885
+Epoch 034, Loss: 0.5533
+Epoch 035, Loss: 0.6036
+Epoch 036, Loss: 0.6050
+Epoch 037, Loss: 0.6156
+Epoch 038, Loss: 0.5761
+Epoch 039, Loss: 0.5512
+Epoch 040, Loss: 0.5683
+Epoch 041, Loss: 0.5137
+Epoch 042, Loss: 0.6224
+Epoch 043, Loss: 0.5508
+Epoch 044, Loss: 0.5943
+Epoch 045, Loss: 0.5395
+Epoch 046, Loss: 0.5696
+Epoch 047, Loss: 0.5948
+Epoch 048, Loss: 0.5468
+Epoch 049, Loss: 0.5761
+Epoch 050, Loss: 0.5699
+Epoch 051, Loss: 0.6583
+Epoch 052, Loss: 0.5753
+Epoch 053, Loss: 0.5533
+Epoch 054, Loss: 0.5901
+Epoch 055, Loss: 0.5105
+Epoch 056, Loss: 0.5041
+Epoch 057, Loss: 0.5264
+Epoch 058, Loss: 0.4952
+Epoch 059, Loss: 0.5250
+Epoch 060, Loss: 0.5327
+Epoch 061, Loss: 0.5772
+Epoch 062, Loss: 0.5255
+Epoch 063, Loss: 0.5578
+Epoch 064, Loss: 0.4904
+Epoch 065, Loss: 0.5535
+Epoch 066, Loss: 0.4895
+Epoch 067, Loss: 0.5517
+Epoch 068, Loss: 0.4984
+Epoch 069, Loss: 0.5123
+Epoch 070, Loss: 0.5059
+Epoch 071, Loss: 0.5036
+Epoch 072, Loss: 0.4915
+Epoch 073, Loss: 0.5472
+Epoch 074, Loss: 0.5509
+Epoch 075, Loss: 0.4648
+Epoch 076, Loss: 0.4799
+Epoch 077, Loss: 0.5680
+Epoch 078, Loss: 0.5139
+Epoch 079, Loss: 0.4917
+Epoch 080, Loss: 0.4552
+Epoch 081, Loss: 0.4821
+Epoch 082, Loss: 0.4843
+Epoch 083, Loss: 0.4843
+Epoch 084, Loss: 0.4489
+Epoch 085, Loss: 0.5286
+Epoch 086, Loss: 0.4806
+Epoch 087, Loss: 0.4511
+Epoch 088, Loss: 0.5254
+Epoch 089, Loss: 0.4894
+Epoch 090, Loss: 0.5469
+Epoch 091, Loss: 0.5213
+Epoch 092, Loss: 0.4946
+Epoch 093, Loss: 0.4703
+Epoch 094, Loss: 0.5390
+Epoch 095, Loss: 0.4608
+Epoch 096, Loss: 0.4869
+Epoch 097, Loss: 0.4373
+Epoch 098, Loss: 0.4952
+Epoch 099, Loss: 0.4713
+Epoch 100, Loss: 0.5151
+
+Test RMSE: 0.9126
+Test MAPE: 336228796858368.0000
+Training time: 75.84 seconds
+Model saved to Models/ml_vs_ml/gnn/GCN_model_full.pkl
+
+Metrics saved to Models/ml_vs_ml/gnn/Graph_Neural_Training_metrics.csv
+
+ **Final Training Results:**
+node_size model_type  test_size     rmse         mape  training_time         model_file
+       10   Q_values        0.2 0.617821 2.175007e-01      14.941019   GNN_model_10.pkl
+       12   Q_values        0.2 0.721329 1.998535e-01      14.072607   GNN_model_12.pkl
+       15   Q_values        0.2 0.762293 2.240130e-01      13.245701   GNN_model_15.pkl
+       20   Q_values        0.2 0.851734 2.623033e-01      15.983612   GNN_model_20.pkl
+       25   Q_values        0.2 1.446156 2.420097e-01      16.244838   GNN_model_25.pkl
+     full   Q_values        0.2 0.912564 3.362288e+14      75.839055 GNN_model_full.pkl
+
+ Training complete for all datasets!
+  adding: Models/ml_vs_ml/gnn/ (stored 0%)
+  adding: Models/ml_vs_ml/gnn/GCN_model_full.pkl (deflated 22%)
+  adding: Models/ml_vs_ml/gnn/Graph_Neural_Training_results.txt (deflated 60%)
+  adding: Models/ml_vs_ml/gnn/Graph_Neural_Training_metrics.csv (deflated 50%)
+  adding: Models/ml_vs_ml/gnn/GCN_model_15.pkl (deflated 22%)
+  adding: Models/ml_vs_ml/gnn/GCN_model_10.pkl (deflated 23%)
+  adding: Models/ml_vs_ml/gnn/GCN_model_25.pkl (deflated 23%)
+  adding: Models/ml_vs_ml/gnn/GCN_model_20.pkl (deflated 21%)
+  adding: Models/ml_vs_ml/gnn/GCN_model_12.pkl (deflated 23%)
+  adding: Models/ml_vs_ml/mlp/ (stored 0%)
+  adding: Models/ml_vs_ml/mlp/MLP_model_25_Circuit.pkl (deflated 5%)
+  adding: Models/ml_vs_ml/mlp/MLP_model_full.pkl (deflated 4%)
+  adding: Models/ml_vs_ml/mlp/MLP_model_15.pkl (deflated 5%)
+  adding: Models/ml_vs_ml/mlp/MLP_model_full_Circuit.pkl (deflated 5%)
+  adding: Models/ml_vs_ml/mlp/MLP_model_20.pkl (deflated 4%)
+  adding: Models/ml_vs_ml/mlp/MLP_model_25.pkl (deflated 4%)
+  adding: Models/ml_vs_ml/mlp/MLP_Training_metrics.csv (deflated 68%)
+  adding: Models/ml_vs_ml/mlp/MLP_model_12.pkl (deflated 5%)
+  adding: Models/ml_vs_ml/mlp/MLP_model_10_Circuit.pkl (deflated 5%)
+  adding: Models/ml_vs_ml/mlp/MLP_model_10.pkl (deflated 5%)
+  adding: Models/ml_vs_ml/mlp/Neural_Training_results.txt (deflated 73%)
+  adding: Models/ml_vs_ml/mlp/MLP_model_20_Circuit.pkl (deflated 5%)
+  adding: Models/ml_vs_ml/mlp/MLP_model_12_Circuit.pkl (deflated 5%)
+  adding: Models/ml_vs_ml/mlp/MLP_model_15_Circuit.pkl (deflated 5%)
+  adding: Models/ml_vs_ml/xgboost/ (stored 0%)
+  adding: Models/ml_vs_ml/xgboost/xgboost_model_10_Circuit.pkl (deflated 83%)
+  adding: Models/ml_vs_ml/xgboost/xgboost_model_20_Circuit.pkl (deflated 83%)
+  adding: Models/ml_vs_ml/xgboost/xgboost_model_15_Circuit.pkl (deflated 83%)
+  adding: Models/ml_vs_ml/xgboost/xgboost_model_full_Circuit.pkl (deflated 81%)
+  adding: Models/ml_vs_ml/xgboost/xgboost_model_12.pkl (deflated 86%)
+  adding: Models/ml_vs_ml/xgboost/xgboost_model_25_Circuit.pkl (deflated 83%)
+  adding: Models/ml_vs_ml/xgboost/xgboost_model_20.pkl (deflated 87%)
+  adding: Models/ml_vs_ml/xgboost/xgboost_model_10.pkl (deflated 85%)
+  adding: Models/ml_vs_ml/xgboost/XGB_Training_results.txt (deflated 73%)
+  adding: Models/ml_vs_ml/xgboost/XGB_Training_metrics.csv (deflated 62%)
+  adding: Models/ml_vs_ml/xgboost/xgboost_model_25.pkl (deflated 87%)
+  adding: Models/ml_vs_ml/xgboost/xgboost_model_15.pkl (deflated 87%)
+  adding: Models/ml_vs_ml/xgboost/xgboost_model_12_Circuit.pkl (deflated 83%)
+  adding: Models/ml_vs_ml/xgboost/xgboost_model_full.pkl (deflated 79%)

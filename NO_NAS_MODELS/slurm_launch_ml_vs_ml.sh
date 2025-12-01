@@ -61,5 +61,5 @@ for tech in "${ml_tech[@]}"
 do
   python model_train_${tech}.py
 done
-zip -r execution_${SLURM_ARRAY_TASK_ID}.zip Models/ml_vsml/*
+zip -r execution_${SLURM_ARRAY_TASK_ID}.zip Models/ml_vs_ml/*
 mv execution_${SLURM_ARRAY_TASK_ID}.zip ${origin}/Models/ml_vs_ml
