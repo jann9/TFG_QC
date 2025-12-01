@@ -1,0 +1,186 @@
+
+
+Classical 10 nodes - Time: 2.0737s, Cut: 10.29807054653623/12.228414773157807
+Graph Size:10
+Execution N°:22
+Model:xgboost
+xgboost 10 nodes - Time: 0.2300s, Cut: 9.324471338638233/12.228414773157807
+Graph Size:10
+Execution N°:22
+Model:MLP
+MLP 10 nodes - Time: 0.0475s, Cut: 11.242055333570365/12.228414773157807
+Classical 12 nodes - Time: 1.8106s, Cut: 12.418526175630793/15.456364148156602
+Graph Size:12
+Execution N°:22
+Model:xgboost
+xgboost 12 nodes - Time: 0.0467s, Cut: 13.05831873086662/15.456364148156602
+Graph Size:12
+Execution N°:22
+Model:MLP
+MLP 12 nodes - Time: 0.0197s, Cut: 8.58873390198474/15.456364148156602
+Classical 15 nodes - Time: 2.9981s, Cut: 17.118999208319185/28.69053701707611
+Graph Size:15
+Execution N°:22
+Model:xgboost
+xgboost 15 nodes - Time: 0.0647s, Cut: 19.257034764570257/28.69053701707611
+Graph Size:15
+Execution N°:22
+Model:MLP
+MLP 15 nodes - Time: 0.0418s, Cut: 17.196253221418097/28.69053701707611
+Classical 20 nodes - Time: 17.1999s, Cut: 46.99032737664468/48.65991365156084
+Graph Size:20
+Execution N°:22
+Model:xgboost
+xgboost 20 nodes - Time: 0.4830s, Cut: 49.0439720696874/48.65991365156084
+Graph Size:20
+Execution N°:22
+Model:MLP
+MLP 20 nodes - Time: 0.4757s, Cut: 47.49556202832636/48.65991365156084
+Classical 25 nodes - Time: 540.0057s, Cut: 44.29461375700411/47.56257405111158
+Graph Size:25
+Execution N°:22
+Model:xgboost
+xgboost 25 nodes - Time: 16.9551s, Cut: 43.779058647999044/47.56257405111158
+Graph Size:25
+Execution N°:22
+Model:MLP
+MLP 25 nodes - Time: 16.9989s, Cut: 36.41542199541894/47.56257405111158
+
+======================================================================
+COMPREHENSIVE COMPARISON SUMMARY
+======================================================================
+
+======================================================================
+Node Size: 10 | Optimal Cut: 12.228414773157807
+======================================================================
+
+Classical QAOA:
+  Time: 2.0737s
+  Cut: 10.29807054653623/12.228414773157807 (84.21%)
+
+xgboost Model:
+  Time: 0.2300s (speedup: 9.0x)
+  Cut: 9.324471338638233/12.228414773157807 (76.25%)
+  Quality vs Classical: -7.96%
+
+MLP Model:
+  Time: 0.0475s (speedup: 43.7x)
+  Cut: 11.242055333570365/12.228414773157807 (91.93%)
+  Quality vs Classical: +7.72%
+
+======================================================================
+Node Size: 12 | Optimal Cut: 15.456364148156602
+======================================================================
+
+Classical QAOA:
+  Time: 1.8106s
+  Cut: 12.418526175630793/15.456364148156602 (80.35%)
+
+xgboost Model:
+  Time: 0.0467s (speedup: 38.7x)
+  Cut: 13.05831873086662/15.456364148156602 (84.49%)
+  Quality vs Classical: +4.14%
+
+MLP Model:
+  Time: 0.0197s (speedup: 92.0x)
+  Cut: 8.58873390198474/15.456364148156602 (55.57%)
+  Quality vs Classical: -24.78%
+
+======================================================================
+Node Size: 15 | Optimal Cut: 28.69053701707611
+======================================================================
+
+Classical QAOA:
+  Time: 2.9981s
+  Cut: 17.118999208319185/28.69053701707611 (59.67%)
+
+xgboost Model:
+  Time: 0.0647s (speedup: 46.3x)
+  Cut: 19.257034764570257/28.69053701707611 (67.12%)
+  Quality vs Classical: +7.45%
+
+MLP Model:
+  Time: 0.0418s (speedup: 71.8x)
+  Cut: 17.196253221418097/28.69053701707611 (59.94%)
+  Quality vs Classical: +0.27%
+
+======================================================================
+Node Size: 20 | Optimal Cut: 48.65991365156084
+======================================================================
+
+Classical QAOA:
+  Time: 17.1999s
+  Cut: 46.99032737664468/48.65991365156084 (96.57%)
+
+xgboost Model:
+  Time: 0.4830s (speedup: 35.6x)
+  Cut: 49.0439720696874/48.65991365156084 (100.79%)
+  Quality vs Classical: +4.22%
+
+MLP Model:
+  Time: 0.4757s (speedup: 36.2x)
+  Cut: 47.49556202832636/48.65991365156084 (97.61%)
+  Quality vs Classical: +1.04%
+
+======================================================================
+Node Size: 25 | Optimal Cut: 47.56257405111158
+======================================================================
+
+Classical QAOA:
+  Time: 540.0057s
+  Cut: 44.29461375700411/47.56257405111158 (93.13%)
+
+xgboost Model:
+  Time: 16.9551s (speedup: 31.8x)
+  Cut: 43.779058647999044/47.56257405111158 (92.05%)
+  Quality vs Classical: -1.08%
+
+MLP Model:
+  Time: 16.9989s (speedup: 31.8x)
+  Cut: 36.41542199541894/47.56257405111158 (76.56%)
+  Quality vs Classical: -16.57%
+
+======================================================================
+OVERALL AVERAGES
+======================================================================
+
+Classical QAOA:
+  Avg Time: 112.8176s
+  Avg Approximation Ratio: 82.79%
+
+xgboost Model:
+  Avg Time: 3.5559s (avg speedup: 31.7x)
+  Avg Approximation Ratio: 84.14%
+  Quality Difference: +1.35%
+
+MLP Model:
+  Avg Time: 3.5167s (avg speedup: 32.1x)
+  Avg Approximation Ratio: 76.32%
+  Quality Difference: -6.46%
+  adding: Models/qaoa_vs_ml/V2/execution_22/comparison_comprehensive.png (deflated 13%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/detailed_timing_analysis.png (deflated 17%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/MLP_model_10_Circuit.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/MLP_model_10.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/MLP_model_12_Circuit.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/MLP_model_12.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/MLP_model_15_Circuit.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/MLP_model_15.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/MLP_model_20_Circuit.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/MLP_model_20.pkl (deflated 4%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/MLP_model_25_Circuit.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/MLP_model_25.pkl (deflated 4%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/MLP_model_full_Circuit.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/MLP_model_full.pkl (deflated 4%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/vanila_vs_ml.csv (deflated 51%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/xgboost_model_10_Circuit.pkl (deflated 83%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/xgboost_model_10.pkl (deflated 85%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/xgboost_model_12_Circuit.pkl (deflated 83%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/xgboost_model_12.pkl (deflated 86%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/xgboost_model_15_Circuit.pkl (deflated 83%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/xgboost_model_15.pkl (deflated 87%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/xgboost_model_20_Circuit.pkl (deflated 83%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/xgboost_model_20.pkl (deflated 87%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/xgboost_model_25_Circuit.pkl (deflated 83%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/xgboost_model_25.pkl (deflated 87%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/xgboost_model_full_Circuit.pkl (deflated 81%)
+  adding: Models/qaoa_vs_ml/V2/execution_22/xgboost_model_full.pkl (deflated 79%)

@@ -42,7 +42,7 @@
 
 
 # the program to execute with its parameters:
-version_qaoa_vs_ml=1
+version_qaoa_vs_ml=2
 version_to_use=1
 
 origin=`pwd`

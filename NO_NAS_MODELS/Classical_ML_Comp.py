@@ -31,7 +31,7 @@ import time
 import sys
 
 global version_qaoa_vs_ml
-version_qaoa_vs_ml = 1
+version_qaoa_vs_ml = 2
 
 class GCNRegressor(torch.nn.Module):
 
@@ -470,7 +470,7 @@ def generate_dataset_with_timing_and_fitness(node_sizes, edge_probs, num_graphs_
             print(f'Model:{model_name}')
             start_time = time.time()            
             if model_name=="MLP":
-                model_path = f"Models/qaoa_vs_ml/V{version_qaoa_vs_ml}/execution_{str(sys.argv[1])}/{model_name}_model_{int(num_nodes)}.pkl"
+                model_path = f"Models/qaoa_vs_ml/V{version_qaoa_vs_ml}/execution_{str(sys.argv[1])}/{model_name}_model_full.pkl"
             elif model_name=="xgboost":
                 model_path = f"Models/qaoa_vs_ml/V{version_qaoa_vs_ml}/execution_{str(sys.argv[1])}/{model_name}_model_full.pkl"
 
@@ -485,15 +485,13 @@ def generate_dataset_with_timing_and_fitness(node_sizes, edge_probs, num_graphs_
                 for j in range(i, num_nodes):
                     q_flat.append(Q[i, j])
             
-            if model_name=="MLP":
-                X = np.array(q_flat).reshape(1, -1)
-            elif model_name=="xgboost":
-                upper_triangular=(node_sizes[-1]*(node_sizes[-1]+1))/2
-                X_core = np.array(q_flat).reshape(1, -1)
-                left_to_fill= upper_triangular - X_core.size 
-                padding= np.zeros(int(left_to_fill))
-                X = np.append(X_core,padding)
-                X = np.reshape(X,(1,int(upper_triangular)))
+
+            upper_triangular=(node_sizes[-1]*(node_sizes[-1]+1))/2
+            X_core = np.array(q_flat).reshape(1, -1)
+            left_to_fill= upper_triangular - X_core.size
+            padding= np.zeros(int(left_to_fill))
+            X = np.append(X_core,padding)
+            X = np.reshape(X,(1,int(upper_triangular)))
             predicted_params = model.predict(X)[0]  # This should be [gamma1, beta1, gamma2, beta2]
             
             # Now run QAOA circuit with ML-predicted parameters (no optimization!)
