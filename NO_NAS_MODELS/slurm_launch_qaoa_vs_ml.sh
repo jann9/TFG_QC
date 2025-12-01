@@ -2,7 +2,7 @@
 # Leave only one comment symbol on selected options
 # Those with two commets will be ignored:
 # The name to show in queue lists for this job:
-#SBATCH -J ML_QAOA
+#SBATCH -J vanilla_vs_ml
 
 # Number of desired cpus (can be in any node):
 ##SBATCH --ntasks=1
@@ -42,22 +42,23 @@
 
 
 # the program to execute with its parameters:
-mkdir logs
-mkdir -p Models/qaoa_vs_ml
-source ~/environement/env_ml_qaoa/bin/activate
+version_qaoa_vs_ml=1
+version_to_use=1
+
 origin=`pwd`
+mkdir logs
+mkdir -p Models/qaoa_vs_ml/V${version_qaoa_vs_ml}
+source ~/environement/env_ml_qaoa/bin/activate
 dir_temp=${LOCALSCRATCH}${USER}/${SLURM_JOB_ID}/job_${SLURM_ARRAY_TASK_ID}
-size_node=(10 12 15 20 25 'full')
-for size in "${size_node[@]}"
-do
-  mkdir -p ${dir_temp}/Models
-  mkdir -p ${dir_temp}/datasets
-  cp -r datasets/* ${dir_temp}/datasets/
-  cp -r *.py ${dir_temp}
-  cp -r Models/ml_vs_ml/MLP/Execution_${SLURM_ARRAY_TASK_ID}/Models/*.pkl ${dir_temp}/Models
-  cp -r Models/ml_vs_ml/xgboost/Execution_${SLURM_ARRAY_TASK_ID}/Models/*.pkl ${dir_temp}/Models
-  cd ${dir_temp}
-  python Classical_ML_Comp.py
-  zip -r Execution_${SLURM_ARRAY_TASK_ID}.zip Models
-  mv Execution_${SLURM_ARRAY_TASK_ID}.zip ${origin}/Models/qaoa_vs_ml
-done
+
+mkdir -p ${dir_temp}/Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_${SLURM_ARRAY_TASK_ID}
+mkdir -p ${dir_temp}/datasets
+cp -r Models/ml_vs_ml/V${version_to_use}/execution_${SLURM_ARRAY_TASK_ID}/Models/ml_vs_ml/mlp/*.pkl ${dir_temp}/Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_${SLURM_ARRAY_TASK_ID}
+cp -r Models/ml_vs_ml/V${version_to_use}/execution_${SLURM_ARRAY_TASK_ID}/Models/ml_vs_ml/xgboost/*.pkl ${dir_temp}/Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_${SLURM_ARRAY_TASK_ID}
+cp -r datasets/* ${dir_temp}/datasets/
+cp -r *.py ${dir_temp}
+
+cd ${dir_temp}
+python Classical_ML_Comp.py ${SLURM_ARRAY_TASK_ID}
+zip -r execution_${SLURM_ARRAY_TASK_ID}.zip Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_${SLURM_ARRAY_TASK_ID}/*
+mv execution_${SLURM_ARRAY_TASK_ID}.zip ${origin}/Models/qaoa_vs_ml/V${version_qaoa_vs_ml}
