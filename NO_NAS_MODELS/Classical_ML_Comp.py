@@ -30,8 +30,12 @@ import random
 import time
 import sys
 
+global version_qaoa_vs_ml
+version_qaoa_vs_ml = 1
 
 class GCNRegressor(torch.nn.Module):
+
+
     def __init__(self, input_dim, hidden_dim, output_dim):
         super(GCNRegressor, self).__init__()
         self.conv1 = GCNConv(input_dim, hidden_dim)
@@ -466,10 +470,11 @@ def generate_dataset_with_timing_and_fitness(node_sizes, edge_probs, num_graphs_
             print(f'Model:{model_name}')
             start_time = time.time()            
             if model_name=="MLP":
-                model_path = f"Models/ml_vs_ml/{model_name}/Execution_{str(sys.argv[1])}/Models/{model_name}_model_{int(num_nodes)}.pkl"
+                model_path = f"Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_{str(sys.argv[1])}/{model_name}_model_{int(num_nodes)}.pkl"
             elif model_name=="xgboost":
-                model_path = f"Models/ml_vs_ml/{model_name}/Execution_{str(sys.argv[1])}/Models/{model_name}_model_full.pkl"            
-            
+                model_path = f"Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_{str(sys.argv[1])}/{model_name}_model_full.pkl"
+
+            #/home/zak-ubuntu/Desktop/Research/6_Processing_ML_QAOA/Code/V4/NO_NAS_MODELS/Models/qaoa_vs_ml/V0/execution_1
             
             # Load model and predict QAOA parameters
             model = joblib.load(model_path)
@@ -611,7 +616,7 @@ def create_comprehensive_comparison(results, save_prefix="comparison"):
     ax4.set_ylim([0, 1.1])
     
     plt.tight_layout()
-    plt.savefig(f'Models/qaoa_vs_ml/execution_{str(sys.argv[1])}/{save_prefix}_comprehensive.png', dpi=300, bbox_inches='tight')
+    plt.savefig(f'Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_{str(sys.argv[1])}/{save_prefix}_comprehensive.png', dpi=300, bbox_inches='tight')
     #plt.show()
     
     # === Print Summary Statistics ===
@@ -750,7 +755,7 @@ def create_comprehensive_comparison_V2(results, save_prefix="comparison"):
     ax4.set_ylim([0, 1.1])
 
     plt.tight_layout()
-    plt.savefig(f'Models/qaoa_vs_ml/execution_{str(sys.argv[1])}/{save_prefix}_comprehensive.png', dpi=300, bbox_inches='tight')
+    plt.savefig(f'Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_{str(sys.argv[1])}/{save_prefix}_comprehensive.png', dpi=300, bbox_inches='tight')
     # plt.show()
 
     # === Print Summary Statistics ===
@@ -814,7 +819,7 @@ def create_comprehensive_comparison_V2(results, save_prefix="comparison"):
 
     data = {'Size':data_node_size, 'Approach': data_model, 'Time': data_time, 'Time_Speed_Up': data_time_speedup, 'Cut': data_cut, 'Optimal_Cut': data_cut_optimal,'Cut_Ratio': data_cuts_ratio, 'Tradeoff':  data_vanilla_vs_ml}
     results_formatted = pd.DataFrame(data)
-    results_formatted.to_csv('Models/qaoa_vs_ml/execution_'+ str(sys.argv[1])+'/vanila_vs_ml.csv')
+    results_formatted.to_csv(f'Models/qaoa_vs_ml//V${version_qaoa_vs_ml}/execution_'+ str(sys.argv[1])+'/vanila_vs_ml.csv')
 
     # Overall averages
     print(f"\n{'=' * 70}")
@@ -895,7 +900,7 @@ def create_detailed_timing_analysis(timing_results):
     ax4.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig('Models/qaoa_vs_ml/execution_'+ str(sys.argv[1])+'/detailed_timing_analysis.png', dpi=300, bbox_inches='tight')
+    plt.savefig(f'Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_'+ str(sys.argv[1])+'/detailed_timing_analysis.png', dpi=300, bbox_inches='tight')
     #plt.show()
 
 
