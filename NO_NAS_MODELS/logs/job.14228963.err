@@ -1,0 +1,12 @@
+mkdir: cannot create directory ‘logs’: File exists
+cp: cannot stat 'Models_nas/V0/ml_vs_ml/ml_vs_ml/Execution_17/Models/*.pkl': No such file or directory
+Traceback (most recent call last):
+  File "Classical_ML_Comp_Full.py", line 926, in <module>
+    run_timing_comparison()
+  File "Classical_ML_Comp_Full.py", line 919, in run_timing_comparison
+    timing_results = generate_dataset_with_timing_and_fitness(node_sizes, edge_probs, num_graphs_per_combination)
+  File "Classical_ML_Comp_Full.py", line 483, in generate_dataset_with_timing_and_fitness
+    model = joblib.load(model_path)
+  File "/mnt/home/users/lcc_neo/zdahi/environement/env_ml_qaoa/lib/python3.8/site-packages/joblib/numpy_pickle.py", line 650, in load
+    with open(filename, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'Models/qaoa_vs_ml/V3/execution_17/MLP_model_nas_full.pkl'

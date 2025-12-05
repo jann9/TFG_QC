@@ -2,7 +2,7 @@
 # Leave only one comment symbol on selected options
 # Those with two commets will be ignored:
 # The name to show in queue lists for this job:
-#SBATCH -J vanilla_vs_ml
+#SBATCH -J vanilla_vs_ml_nas
 
 # Number of desired cpus (can be in any node):
 ##SBATCH --ntasks=1
@@ -56,7 +56,7 @@ mkdir -p ${dir_temp}/Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_${SLURM_
 mkdir -p ${dir_temp}/datasets
 cp -r Models/ml_vs_ml/V${version_to_use_no_nas}/execution_${SLURM_ARRAY_TASK_ID}/Models/ml_vs_ml/mlp/*.pkl ${dir_temp}/Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_${SLURM_ARRAY_TASK_ID}
 cp -r Models/ml_vs_ml/V${version_to_use_no_nas}/execution_${SLURM_ARRAY_TASK_ID}/Models/ml_vs_ml/xgboost/*.pkl ${dir_temp}/Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_${SLURM_ARRAY_TASK_ID}
-cp -r Models_nas/ml_vs_ml/V${version_to_use_nas}/ml_vs_ml/Execution_${SLURM_ARRAY_TASK_ID}/Models/*.pkl ${dir_temp}/Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_${SLURM_ARRAY_TASK_ID}
+cp -r Models_nas/V${version_to_use_nas}/ml_vs_ml/ml_vs_ml/Execution_${SLURM_ARRAY_TASK_ID}/Models/*.pkl ${dir_temp}/Models/qaoa_vs_ml/V${version_qaoa_vs_ml}/execution_${SLURM_ARRAY_TASK_ID}
 cp -r datasets/* ${dir_temp}/datasets/
 cp -r *.py ${dir_temp}
 

@@ -1,0 +1,30 @@
+
+
+Classical 10 nodes - Time: 2.1794s, Cut: 11.245895398332138/12.005702995093454
+Graph Size:10
+Execution N°:8
+Model:MLP_NAS
+  adding: Models/qaoa_vs_ml/V3/execution_8/MLP_model_10_Circuit.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/MLP_model_10.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/MLP_model_12_Circuit.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/MLP_model_12.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/MLP_model_15_Circuit.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/MLP_model_15.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/MLP_model_20_Circuit.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/MLP_model_20.pkl (deflated 4%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/MLP_model_25_Circuit.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/MLP_model_25.pkl (deflated 4%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/MLP_model_full_Circuit.pkl (deflated 5%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/MLP_model_full.pkl (deflated 4%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/xgboost_model_10_Circuit.pkl (deflated 83%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/xgboost_model_10.pkl (deflated 86%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/xgboost_model_12_Circuit.pkl (deflated 83%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/xgboost_model_12.pkl (deflated 86%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/xgboost_model_15_Circuit.pkl (deflated 83%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/xgboost_model_15.pkl (deflated 87%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/xgboost_model_20_Circuit.pkl (deflated 83%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/xgboost_model_20.pkl (deflated 87%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/xgboost_model_25_Circuit.pkl (deflated 83%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/xgboost_model_25.pkl (deflated 87%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/xgboost_model_full_Circuit.pkl (deflated 81%)
+  adding: Models/qaoa_vs_ml/V3/execution_8/xgboost_model_full.pkl (deflated 79%)
