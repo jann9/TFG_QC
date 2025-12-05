@@ -1,6 +1,3 @@
 Model Training Metrics
 ========================================
 
-
- Node size: 10
-   - RMSE = 0.59226, MAPE = 0.24780, TIME =  0.03105

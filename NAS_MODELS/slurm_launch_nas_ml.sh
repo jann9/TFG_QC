@@ -43,10 +43,11 @@
 
 # the program to execute with its parameters:
 mkdir logs
-mkdir Models
+mkdir Models/ml_vs_ml
 source ~/environement/env_ml_qaoa/bin/activate
 origin=`pwd`
 dir_temp=${LOCALSCRATCH}${USER}/${SLURM_JOB_ID}/job_${SLURM_ARRAY_TASK_ID}
+mkdir -p ${dir_temp}
 cp -r MLP/* ${dir_temp}
 cd ${dir_temp}
 bash alg_launcher_slurm.sh
