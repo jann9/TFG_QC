@@ -1,6 +1,6 @@
 mkdir Models
-#graph_size=(10 12 15 20 25)
-graph_size=(10)
+graph_size=(10 12 15 20 25 "full")
+#graph_size=(10 12)
 for node_size in "${graph_size[@]}"
 do
   if [ $node_size -eq 10 ]; then

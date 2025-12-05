@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 plt.rcParams["font.family"] = "serif"
 
 
-
-df = pd.read_csv("Models/qaoa_vs_ml/statistics_vanilla_vs_ml.csv")
+version=2
+df = pd.read_csv(f"Models/qaoa_vs_ml/V{version}/statistics_vanilla_vs_ml.csv")
 graph_size = [10, 12, 15, 20, 25]
 metrics=["Time","Time Speedup","Cut","Cut Ratio"]
 for metric in metrics:
@@ -93,5 +93,5 @@ for metric in metrics:
         plt.text(i+2+0.3,values_2[i]+2,values_2[i])
     """
 
-    plt.savefig(f'Figures/vanilla_vs_ml/{metric}.pdf', format="pdf", bbox_inches="tight")
+    plt.savefig(f'Figures/V{version}/vanilla_vs_ml/{metric}.pdf', format="pdf", bbox_inches="tight")
     plt.show()

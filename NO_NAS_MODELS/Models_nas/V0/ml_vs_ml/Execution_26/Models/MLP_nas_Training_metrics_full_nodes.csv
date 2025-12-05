@@ -1,0 +1,2 @@
+node_size,model_type,dataset_size,n_features,n_outputs,hidden_layers,activation,solver,test_size,rmse,mape,training_time,converged,n_iterations,n_iteration_max,model_file
+full,Q_values,250,325,4,"(144, 73, 11)",logistic,lbfgs,0.2,0.6148620981414537,0.23021150566706428,0.11990690231323242,True,4,3099,MLP_model_nas_full.pkl
